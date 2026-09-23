@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>BaconAI, a case study by Cole Crawley</title>
+<meta name="description" content="An AI travel planner that turns a destination into a day-by-day itinerary on a live map, and how three rounds of design critique reshaped it.">
+<link rel="canonical" href="https://colecrawley.vercel.app/ai-travel-planner.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cole Crawley">
+<meta property="og:title" content="BaconAI, a case study by Cole Crawley">
+<meta property="og:description" content="An AI travel planner that turns a destination into a day-by-day itinerary on a live map, and how three rounds of design critique reshaped it.">
+<meta property="og:url" content="https://colecrawley.vercel.app/ai-travel-planner.html">
+<meta property="og:image" content="https://colecrawley.vercel.app/img/og/ai-travel-planner.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#EFEEE9">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body data-series="onepiece">
+<div class="progress" aria-hidden="true"></div>
+
+<nav class="site-nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="index.html">Cole Crawley</a>
+    <ul class="nav-links">
+      <li><a href="index.html#contents">Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="colour-page">
+  <div class="sfx" aria-hidden="true"></div>
+  <div class="wrap">
+    <div>
+      <p class="chapter-label"><b>4</b> Self-directed product, live</p>
+      <h1 style="view-transition-name: ch-bacon">BaconAI</h1>
+      <p class="lede">An AI travel planner: type a destination, get a day-by-day itinerary beside a live map. The interesting part isn't the AI call. It's how the trip page changed each time I used it and found something wrong.</p>
+    </div>
+    <p class="chapter-kanji" lang="ja" aria-hidden="true">第四話</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <dl class="meta">
+    <div><dt>Role</dt><dd>Product and interaction design, build</dd></div>
+    <div><dt>Focus</dt><dd>Visual direction, map interaction, information density</dd></div>
+  </dl>
+  <aside class="recap" aria-label="In short">
+    <p class="recap-label">In short <span lang="ja">あらすじ</span></p>
+    <dl>
+      <div><dt>What it is</dt><dd>An AI travel planner that lays out every day of a trip beside a live map.</dd></div>
+      <div><dt>My part</dt><dd>Product direction and design, refined over three rounds of my own testing. The build was AI-assisted.</dd></div>
+      <div><dt>Result</dt><dd>Live, with day filters, one-click swaps for any stop, and saved trips.</dd></div>
+    </dl>
+    <p class="recap-actions">
+      <a class="btn btn-solid" href="https://aitravelplanner-snowy.vercel.app" target="_blank" rel="noopener">Try it live</a>
+      <a class="btn" href="https://github.com/Cole-Crawley/ai_travel_planner_project" target="_blank" rel="noopener">Read the code</a>
+    </p>
+  </aside>
+</div>
+
+<main class="ink">
+  <div class="wrap">
+    <h2>The idea</h2>
+    <p class="lede">Most trip planners hand you either a wall of text or a map full of pins with no sense of order. BaconAI puts both side by side: an itinerary split into days, each with timed stops and a theme, and a map whose numbered pins follow the same sequence.</p>
+    <p>The build was heavily AI-assisted, and I'm not claiming otherwise. What was mine was the direction: what the product should feel like, what was wrong with each version, and what to change next.</p>
+
+    <h2>Finding a visual direction</h2>
+    <div class="two-col">
+      <div>
+        <h3>From generic dark to warm editorial</h3>
+        <p>The first version was a dark hero with white text, the default look of a hundred AI demos. I wanted something minimal with personality, compared a few colour and layout directions, and chose a warm magazine style: cream paper, charcoal text, one coral accent, a heavy Playfair Display for headlines and DM Sans for reading.</p>
+        <ul class="palette" aria-label="Palette">
+          <li><i style="background:#F5F0E8"></i>Cream</li>
+          <li><i style="background:#1C1917"></i>Charcoal</li>
+          <li><i style="background:#E8573A"></i>Coral</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Less advertising, more use of space</h3>
+        <p>The first landing page read like a sales page, with too many selling points competing. I stripped it back so the empty space did some work: one search field that accepts a plain sentence, quick-pick destinations so nobody faces a blank box, and a three-step explanation underneath.</p>
+      </div>
+    </div>
+
+    <figure class="panel" data-reveal>
+      <img src="img/bacon-home.webp" alt="BaconAI landing page: a large serif headline, Plan your trip to Rome, with travel photos in the side margins, a single search field, destination chips and a three-step how it works section" width="1600" height="1002" loading="lazy">
+      <figcaption>One question, one field, and suggestions for anyone who doesn't know where to start.</figcaption>
+    </figure>
+
+    <h2>Three rounds on the trip page</h2>
+    <p>Most of the design time went into the results page. Each round started with me using it and writing down what felt wrong.</p>
+    <ul class="decisions">
+      <li><strong>Round one: nothing harsh, nothing cramped</strong>My notes were that the buttons were too small, the sharp corners felt hostile, and the map looked "awkward just on the side". Buttons got bigger hit areas, corners got a consistent radius, and the map got real width.</li>
+      <li><strong>Round two: let the map answer a question</strong>I made each itinerary card clickable so the map would open on that stop, with a way to close it if it took too much room, and asked for alternatives based on what the traveller likes.</li>
+      <li><strong>Round three: I reversed my own decision</strong>Opening the map per card turned out worse, because you lost the overview of the day. So every stop is now plotted from the start, day filters narrow the map when you want to focus, and opening a stop offers three nearby alternatives, each with a "Use this instead" button that swaps it into that slot.</li>
+      <li><strong>Answer the questions people actually have</strong>Every stop shows the address, how long to allow, and whether it's free or roughly what it costs. Opening one adds an insider tip, and alternatives carry the same details so you're comparing like with like.</li>
+    </ul>
+
+    <div class="panel-row">
+      <figure class="panel" data-reveal>
+        <img src="img/bacon-itinerary.webp" alt="Trip page for Kyoto: day-grouped activity cards with time, category, address, duration and price, beside a map with numbered pins" width="1600" height="1002" loading="lazy">
+        <figcaption>The whole trip plotted at once, with day filters top right.</figcaption>
+      </figure>
+      <figure class="panel" data-reveal>
+        <img src="img/bacon-swap.webp" alt="An opened activity with an insider tip and three nearby alternatives, each with a Use this instead button" width="1600" height="1002" loading="lazy">
+        <figcaption>Opening a stop: an insider tip, then swaps you can drop straight into the day.</figcaption>
+      </figure>
+    </div>
+
+    <h2>Plans that work on the ground</h2>
+    <div class="two-col">
+      <div>
+        <h3>A route, not a scatter</h3>
+        <p>An itinerary that zigzags across a city looks fine as a list and falls apart on a map. The planner clusters each day by neighbourhood, respects opening hours and meal times, leaves travel time between stops, and keeps a comfortable pace. Alternatives follow the same rules.</p>
+      </div>
+      <div>
+        <h3>Keeping plans</h3>
+        <p>Trips can be saved and reopened from a "My trips" page, which shows each day's theme and stops as a compact timeline, so you can see what you planned without opening the map view.</p>
+      </div>
+    </div>
+
+    <figure class="panel narrow" data-reveal>
+      <img src="img/bacon-saved.webp" alt="My trips page showing a saved Kyoto itinerary as a day-by-day timeline with a View and edit button" width="1220" height="870" loading="lazy">
+      <figcaption>Saved trips as compact day timelines.</figcaption>
+    </figure>
+
+    <h2>Constraints</h2>
+    <div class="two-col">
+      <div>
+        <h3>Cost shaped the product</h3>
+        <p>I switched mapping from Mapbox to MapTiler for its free tier. The AI started on OpenAI, moved to Groq's free models with a fallback across three of them, and now runs on Claude after those models were retired. Knowing what a platform will actually cost, and letting that reshape the experience, is part of the design job.</p>
+      </div>
+      <div>
+        <h3>An interaction that felt wrong</h3>
+        <p>Highlighting a stop made the map stutter, because every change redrew it. Updating the map directly instead of re-rendering it made selection feel instant. An engineering fix, but I only found it because the interaction felt off.</p>
+      </div>
+    </div>
+
+    <h2>Stack</h2>
+    <ul class="stack" aria-label="Technologies">
+      <li>Next.js</li><li>TypeScript</li><li>Tailwind</li><li>shadcn/ui</li><li>Framer Motion</li><li>MapLibre and MapTiler</li><li>Claude API</li>
+    </ul>
+  </div>
+</main>
+
+<nav class="next-chapter" aria-label="Next chapter">
+  <div class="wrap">
+    <a href="codemarker.html" data-series="akatsuki">
+      <span><small>Next chapter</small><span class="title" style="view-transition-name: ch-codemarker">CodeMarker</span></span>
+      <span class="swatches" aria-hidden="true"><i></i><i></i><i></i></span>
+    </a>
+  </div>
+</nav>
+
+<footer class="colophon">
+  <div class="wrap">
+    <p>Chapter 4's colour page borrows One Piece's red, straw gold and sea blue: a voyage, planned on a map.</p>
+    <p><a class="link" href="index.html">Back to contents</a></p>
+  </div>
+</footer>
+
+<script src="js/site.js" defer></script>
+</body>
+</html>

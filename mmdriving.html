@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MMDriving, a case study by Cole Crawley</title>
+<meta name="description" content="A website for a DVSA-approved driving instructor, designed and built for a real client and still in progress.">
+<link rel="canonical" href="https://colecrawley.vercel.app/mmdriving.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cole Crawley">
+<meta property="og:title" content="MMDriving, a case study by Cole Crawley">
+<meta property="og:description" content="A website for a DVSA-approved driving instructor, designed and built for a real client and still in progress.">
+<meta property="og:url" content="https://colecrawley.vercel.app/mmdriving.html">
+<meta property="og:image" content="https://colecrawley.vercel.app/img/og/mmdriving.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#EFEEE9">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body data-series="bleach">
+<div class="progress" aria-hidden="true"></div>
+
+<nav class="site-nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="index.html">Cole Crawley</a>
+    <ul class="nav-links">
+      <li><a href="index.html#contents">Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="colour-page">
+  <div class="sfx" aria-hidden="true"></div>
+  <div class="wrap">
+    <div>
+      <p class="chapter-label"><b>1</b> Client work, still in progress</p>
+      <h1 style="view-transition-name: ch-mmdriving">MMDriving</h1>
+      <p class="lede">A website for a DVSA-approved driving instructor: page structure, visual design, copy and the front-end build, for a real client whose business depends on it.</p>
+    </div>
+    <p class="chapter-kanji" lang="ja" aria-hidden="true">第一話</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <dl class="meta">
+    <div><dt>Role</dt><dd>Designer and developer</dd></div>
+    <div><dt>Client</dt><dd>Independent driving instructor</dd></div>
+    <div><dt>Areas covered</dt><dd>Loughborough, Melton Mowbray, Nottingham, Leicester, Derby, Hinckley</dd></div>
+  </dl>
+  <aside class="recap" aria-label="In short">
+    <p class="recap-label">In short <span lang="ja">あらすじ</span></p>
+    <dl>
+      <div><dt>What it is</dt><dd>A one-page website that turns nervous learners into booked first lessons.</dd></div>
+      <div><dt>My part</dt><dd>Page structure, visual design, copy and the build, working directly with the client.</dd></div>
+      <div><dt>Result</dt><dd>Live and being finished with the client, with booking one tap away on every screen.</dd></div>
+    </dl>
+    <p class="recap-actions">
+      <a class="btn btn-solid" href="https://mmdriving-snowy.vercel.app" target="_blank" rel="noopener">Visit the site</a>
+      <a class="btn" href="https://github.com/Cole-Crawley/mmdriving" target="_blank" rel="noopener">Read the code</a>
+    </p>
+  </aside>
+</div>
+
+<main class="ink">
+  <div class="wrap">
+    <div class="wip">
+      <strong>Still in progress.</strong> I'm finishing this with the client. Some copy on the live site, including the pass count and rating in the hero, is placeholder text until they confirm real figures.
+    </div>
+
+    <h2>The brief</h2>
+    <p class="lede">An instructor covering six East Midlands towns needed a site a nervous learner, or their parent, would trust, and that turns a visit into a booked first lesson.</p>
+
+    <figure class="panel" data-reveal>
+      <img src="img/mm-hero.webp" alt="MMDriving hero: headline 'Pass Your Test. First Time.', book and call buttons, and a card listing DVSA approval, pass rate, rating and a dual-control car" width="1600" height="1000" loading="lazy">
+      <figcaption>The hero leads with the outcome a learner wants and puts both ways to book side by side. The stats under the buttons are placeholders for now.</figcaption>
+    </figure>
+
+    <h2>One page, in the order a learner decides</h2>
+    <p>The site is a single scrolling page that follows the questions a learner asks, in the order they ask them: who's teaching me, what lessons are there, what does it cost, how do I start, what do other people say, and how do I book. Every town is named rather than a vague "East Midlands", both for local search and for a parent scanning for their own town.</p>
+
+    <div class="panel-row">
+      <figure class="panel" data-reveal>
+        <img src="img/mm-journey.webp" alt="Illustration of a winding road from Beginner through Building Confidence and Test Ready to Passed, gold on navy" width="470" height="624" loading="lazy">
+        <figcaption>Learning to drive drawn as a road, from first lesson to test pass, beside the instructor's introduction.</figcaption>
+      </figure>
+      <figure class="panel" data-reveal>
+        <img src="img/mm-form.webp" alt="Enquiry form with name, phone, email, lesson type and area dropdowns, an optional message box and a Send Enquiry button" width="839" height="721" loading="lazy">
+        <figcaption>The enquiry form asks for exactly what the instructor needs to reply: lesson type and area as choices, and an optional note with prompts like "I'm quite nervous".</figcaption>
+      </figure>
+    </div>
+
+    <h2>Key decisions</h2>
+    <ul class="decisions">
+      <li><strong>Booking is always one tap away</strong>The header carries both "Call Now" and "Book a Lesson" and stays pinned while you scroll; on phones a bar at the bottom of the screen does the same job. Ranking well locally is wasted if booking takes effort.</li>
+      <li><strong>Pricing that points somewhere</strong>Three ways to pay, with the 10-hour block marked as best value, a separate test-day package, and the cancellation policy stated up front instead of in small print.</li>
+      <li><strong>Answer the worries before they're asked</strong>How many lessons you'll need, whether you need a provisional licence first, switching between manual and automatic, and whether nervous drivers are welcome are all answered in an accordion FAQ, so the answers are there without turning the page into a wall of text.</li>
+      <li><strong>Calm and competent over loud</strong>A deep instructional navy with a warm gold for actions, a deliberate move away from the saturated palettes most local driving-school sites use.</li>
+    </ul>
+
+    <div class="panel-row">
+      <figure class="panel" data-reveal>
+        <img src="img/mm-services.webp" alt="Six lesson type cards: manual, automatic, semi-intensive, Pass Plus, motorway and refresher lessons" width="1600" height="1000" loading="lazy">
+        <figcaption>Every lesson type explained in a sentence, in the learner's language.</figcaption>
+      </figure>
+      <figure class="panel" data-reveal>
+        <img src="img/mm-pricing.webp" alt="Pricing: pay as you learn, a highlighted 10-hour block marked best value, 90-minute sessions, a test day package and a cancellation policy" width="1600" height="1000" loading="lazy">
+        <figcaption>Pricing with one clear recommendation and no hidden terms.</figcaption>
+      </figure>
+    </div>
+
+    <figure class="panel" data-reveal>
+      <img src="img/mm-faq.webp" alt="FAQ accordion with the first question, how many lessons will I need, opened to show an honest answer" width="1600" height="1000" loading="lazy">
+      <figcaption>The FAQ answers the worries a nervous learner has before they have to pick up the phone.</figcaption>
+    </figure>
+
+    <h2>Designing inside a real constraint</h2>
+    <p>There was no budget for a backend, so there isn't one. The site is fully static and the enquiry form runs through Formspree. That one constraint shaped everything downstream: no accounts, no personalisation, nothing that assumes infrastructure the client isn't paying for.</p>
+
+    <h2>Stack</h2>
+    <ul class="stack" aria-label="Technologies">
+      <li>React 19</li><li>TypeScript</li><li>Vite</li><li>CSS Modules</li><li>Design tokens</li><li>Formspree</li><li>Netlify</li>
+    </ul>
+  </div>
+</main>
+
+<nav class="next-chapter" aria-label="Next chapter">
+  <div class="wrap">
+    <a href="distill.html" data-series="naruto">
+      <span><small>Next chapter</small><span class="title" style="view-transition-name: ch-distill">Distill</span></span>
+      <span class="swatches" aria-hidden="true"><i></i><i></i><i></i></span>
+    </a>
+  </div>
+</nav>
+
+<footer class="colophon">
+  <div class="wrap">
+    <p>Chapter 1's colour page borrows from Bleach, where Ichigo is issued a Substitute Soul Reaper licence. Fitting for a site about earning a driving licence.</p>
+    <p><a class="link" href="index.html">Back to contents</a></p>
+  </div>
+</footer>
+
+<script src="js/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+/* Design tokens: Cole Crawley portfolio
+   Concept: a manga volume. Interiors are ink on newsprint; colour only
+   appears on each chapter's opening page, borrowed from a series Cole loves. */
+
+:root {
+  /* Ink on newsprint */
+  --paper:      #EFEEE9;
+  --paper-2:    #E3E1DA;
+  --ink:        #000000;
+  --ink-2:      #26251F;
+  --ink-3:      #66645C;
+  --rule:       #000000;
+  --rule-soft:  #C9C6BC;
+  --tone:       rgba(0, 0, 0, 0.14);   /* screentone dots */
+
+  /* Default spot colour (home page): Naruto orange, the first chapter's */
+  --c1: #F0782A;
+  --c2: #1D3461;
+  --c3: #C8372D;
+  --on-c1: #000000;
+
+  /* Type */
+  --f-display: "Dela Gothic One", "Arial Black", "Helvetica Neue", sans-serif;
+  --f-body:    "Shippori Mincho", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+
+  --step--1: clamp(0.84rem, 0.82rem + 0.1vw, 0.9rem);
+  --step-0:  clamp(1.06rem, 1.02rem + 0.2vw, 1.15rem);
+  --step-1:  clamp(1.3rem, 1.2rem + 0.45vw, 1.55rem);
+  --step-2:  clamp(1.7rem, 1.5rem + 0.9vw, 2.2rem);
+  --step-3:  clamp(2.2rem, 1.8rem + 1.9vw, 3.3rem);
+  --step-4:  clamp(2.9rem, 2.1rem + 3.6vw, 5.4rem);
+  --step-5:  clamp(3.4rem, 2.2rem + 5.6vw, 7.6rem);
+
+  /* Space */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4.5rem;
+  --sp-9: 7rem;
+
+  --measure: 66ch;
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --panel-border: 2px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-1: 180ms;
+  --dur-2: 420ms;
+  --dur-3: 800ms;
+
+  color-scheme: light;
+}
+
+/* Ink mode: the same volume printed white on black */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper:     #121211;
+    --paper-2:   #1C1C1A;
+    --ink:       #F2F0EA;
+    --ink-2:     #DAD7CE;
+    --ink-3:     #9C998F;
+    --rule:      #F2F0EA;
+    --rule-soft: #3A3935;
+    --tone:      rgba(255, 255, 255, 0.12);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper:     #121211;
+  --paper-2:   #1C1C1A;
+  --ink:       #F2F0EA;
+  --ink-2:     #DAD7CE;
+  --ink-3:     #9C998F;
+  --rule:      #F2F0EA;
+  --rule-soft: #3A3935;
+  --tone:      rgba(255, 255, 255, 0.12);
+  color-scheme: dark;
+}
+
+/* Chapter palettes. Each case study sets data-series on <body>. */
+[data-series="naruto"]   { --c1: #F0782A; --c2: #1D3461; --c3: #C8372D; --on-c1: #000000; --sfx: "シュッ"; }
+[data-series="bleach"]   { --c1: #0B0B0B; --c2: #F25C1F; --c3: #FFFFFF; --on-c1: #FFFFFF; --sfx: "ザン"; }
+[data-series="jojo"]     { --c1: #5E2A8C; --c2: #E3A92B; --c3: #D6307A; --on-c1: #FFFFFF; --sfx: "ゴゴゴ"; }
+[data-series="onepiece"] { --c1: #D2322D; --c2: #F2C14E; --c3: #1B6FA8; --on-c1: #FFFFFF; --sfx: "ドン"; }
+[data-series="akatsuki"] { --c1: #151515; --c2: #C1272D; --c3: #F4F1EC; --on-c1: #F4F1EC; --sfx: "ザワ"; }
+[data-series="urahara"]  { --c1: #1E4A34; --c2: #E0A83A; --c3: #F4F1EC; --on-c1: #F4F1EC; --sfx: "チャリン"; }
+
+/* The spot colour used inside a chapter's ink pages (links, markers, progress) */
+[data-series]            { --spot: var(--c1); }
+[data-series="bleach"],
+[data-series="akatsuki"],
+[data-series="urahara"]  { --spot: var(--c2); }
+:root                    { --spot: var(--c1); }

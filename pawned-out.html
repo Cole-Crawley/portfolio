@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Pawned Out, a bonus chapter by Cole Crawley</title>
+<meta name="description" content="A pawn shop game in Unity, and how its interface keeps buying, haggling and fighting readable at a glance.">
+<link rel="canonical" href="https://colecrawley.vercel.app/pawned-out.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cole Crawley">
+<meta property="og:title" content="Pawned Out, a bonus chapter by Cole Crawley">
+<meta property="og:description" content="A pawn shop game in Unity, and how its interface keeps buying, haggling and fighting readable at a glance.">
+<meta property="og:url" content="https://colecrawley.vercel.app/pawned-out.html">
+<meta property="og:image" content="https://colecrawley.vercel.app/img/og/pawned-out.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#EFEEE9">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body data-series="urahara">
+<div class="progress" aria-hidden="true"></div>
+
+<nav class="site-nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="index.html">Cole Crawley</a>
+    <ul class="nav-links">
+      <li><a href="index.html#contents">Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="colour-page">
+  <div class="sfx" aria-hidden="true"></div>
+  <div class="wrap">
+    <div>
+      <p class="chapter-label"><b>Bonus</b> Game in progress</p>
+      <h1 style="view-transition-name: ch-pawned">Pawned Out</h1>
+      <p class="lede">A first-person pawn shop game in Unity. You buy low, sell high, haggle with whoever walks in, and now and then deal with trouble at the counter. Every one of those moments is a decision, so the interface has to make the numbers readable in a second.</p>
+    </div>
+    <p class="chapter-kanji" lang="ja" aria-hidden="true">番外編</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <dl class="meta">
+    <div><dt>Role</dt><dd>Game design, UX and UI, programming</dd></div>
+    <div><dt>Team</dt><dd>Two people</dd></div>
+    <div><dt>Engine</dt><dd>Unity 6, C#</dd></div>
+    <div><dt>Status</dt><dd>In development since May 2026</dd></div>
+  </dl>
+  <aside class="recap" aria-label="In short">
+    <p class="recap-label">In short <span lang="ja">あらすじ</span></p>
+    <dl>
+      <div><dt>What it is</dt><dd>A pawn shop simulation game about appraising, haggling and keeping the shop afloat.</dd></div>
+      <div><dt>My part</dt><dd>The game design, the UX and UI, and the programming so far.</dd></div>
+      <div><dt>Result</dt><dd>The shop, haggling, appraisal, skills, end-of-day summary and menus are designed and working in the Unity build.</dd></div>
+    </dl>
+    <p class="recap-actions"><span class="recap-note">Still in development, so there's no public build to play yet.</span></p>
+  </aside>
+</div>
+
+<main class="ink">
+  <div class="wrap">
+    <h2>A shop counter full of decisions</h2>
+    <p class="lede">Most of the game happens in quick trades with a queue of customers waiting. If a screen makes you hunt for a number, you lose the thread of the deal. So every screen starts from the same question: what does the player need to decide right now, and what's the one number that decides it?</p>
+
+    <figure class="panel" data-reveal>
+      <img src="img/pawned-game-hud.webp" alt="First-person view of the pawn shop counter in Unity, with a till and shelves, cash and today's profit in the top left, the clock in the top right and an item hotbar along the bottom" width="1523" height="857" loading="lazy">
+      <figcaption>Behind the counter, in the current build. Cash and today's profit sit top left, the clock top right, and the hotbar along the bottom, so the middle of the screen stays free for the shop.</figcaption>
+    </figure>
+
+    <h2>Haggling you can read at a glance</h2>
+    <p>Haggling is the heart of the game, so it gets the clearest layout. Their price and yours sit side by side in red and green. The customer's mood runs from calm to hostile, so you can see how far you can push before they walk. Fixed steps of 50, 100 and 200 make adjusting a price a single click, your budget sits top right, and there are only two ways out: make the offer or walk away.</p>
+
+    <figure class="panel" data-reveal>
+      <img src="img/pawned-game-haggle.webp" alt="Haggle screen: a customer called Hank with a mood bar from calm to hostile and a line of dialogue, a taxidermy bear head for sale, their ask of $781 against your offer of $1,200, buttons to change the price by 50, 100 or 200, Make offer and Walk away buttons, and your budget and skills on the right" width="1522" height="851" loading="lazy">
+      <figcaption>Selling a taxidermy bear head to Hank. Every number that matters to the deal is visible without scrolling or switching screens.</figcaption>
+    </figure>
+
+    <h2>Progress you can feel</h2>
+    <p>Skills are only worth unlocking if you can tell what they do, so each one states its effect as a number, like a 10% better chance of a haggle landing. The end of each day gives you a grade and a short summary, then one button starts the next day, so there's a natural moment to stop or keep going.</p>
+
+    <div class="panel-row">
+      <figure class="panel" data-reveal>
+        <img src="img/pawned-game-skills.webp" alt="Skill tree over the shop scene: skill points and categories on the left, a branch of people skills in the middle, and a card for Silver Tongue on the right showing a 10% bonus to haggle success and an Unlocked button" width="1523" height="851" loading="lazy">
+        <figcaption>The skill tree sits over the shop rather than replacing it, and each skill card leads with what it changes.</figcaption>
+      </figure>
+      <figure class="panel" data-reveal>
+        <img src="img/pawned-game-day.webp" alt="Day 36 complete summary: a B performance grade, profit, customers served, items sold, total cash, a reputation change, and a Next day button" width="1524" height="853" loading="lazy">
+        <figcaption>The end of a day: a grade, four numbers and how your reputation moved.</figcaption>
+      </figure>
+    </div>
+
+    <div class="panel-row">
+      <figure class="panel" data-reveal>
+        <img src="img/pawned-game-stats.webp" alt="Pause menu with Shop stats open: total cash, today's profit and two more figures across the top, and a chart of the week below, with the menu down the left side" width="1522" height="849" loading="lazy">
+        <figcaption>Pausing opens straight onto the shop's numbers, with the rest of the menu down the side.</figcaption>
+      </figure>
+      <figure class="panel" data-reveal>
+        <img src="img/pawned-game-settings.webp" alt="Settings screen with Graphics, Audio and Gameplay tabs, and options for quality, frame rate limit, resolution, vsync and fullscreen" width="1526" height="850" loading="lazy">
+        <figcaption>Settings follow the same pattern: tabs on top, one option per row.</figcaption>
+      </figure>
+    </div>
+
+    <h2>Designed first, then built</h2>
+    <p>I design each screen before building it in Unity, so the layout decisions are made while they're still cheap to change. Appraisal is already working in the game, and the backpack is being built towards this design: condition gets its own colour on every item, and opening one puts what it's worth, what you paid and your margin in one column.</p>
+
+    <div class="panel-row">
+      <figure class="panel" data-reveal>
+        <img src="img/pawned-inventory.webp" alt="Inventory design: a backpack grid of items of different sizes with coloured condition borders, a weight limit, and a vintage watch selected showing Mint, market value, price paid and margin" width="1558" height="903" loading="lazy">
+        <figcaption>The backpack design. Items take up space by size, and margin is the last line of every item.</figcaption>
+      </figure>
+      <figure class="panel" data-reveal>
+        <img src="img/pawned-appraise.webp" alt="Appraisal design: a 1962 electric guitar marked Worn, with market value, recommended offer and quick flip price, and a verified serial number" width="1499" height="878" loading="lazy">
+        <figcaption>The appraisal design. The condition badge comes first because it changes every number under it.</figcaption>
+      </figure>
+    </div>
+
+    <div class="narration">
+      <p>I studied games, animation and VFX at college before computer science, and this is where both sides meet. So far I've done the game design, the UX research and the UI, and built all of it in Unity myself. It's still a work in progress, so these screens will keep changing.</p>
+    </div>
+
+    <h2>Stack</h2>
+    <ul class="stack" aria-label="Technologies">
+      <li>Unity 6</li><li>C#</li><li>Unity UI</li>
+    </ul>
+  </div>
+</main>
+
+<nav class="next-chapter" aria-label="Back to contents">
+  <div class="wrap">
+    <a href="index.html#contents" data-series="bleach">
+      <span><small>That's the volume</small><span class="title">Back to contents</span></span>
+      <span class="swatches" aria-hidden="true"><i></i><i></i><i></i></span>
+    </a>
+  </div>
+</nav>
+
+<footer class="colophon">
+  <div class="wrap">
+    <p>The bonus chapter borrows the green of Bleach's Urahara Shop, the most suspicious shop counter in manga. チャリン is the sound of a coin landing on it.</p>
+    <p><a class="link" href="index.html">Back to contents</a></p>
+  </div>
+</footer>
+
+<script src="js/site.js" defer></script>
+</body>
+</html>

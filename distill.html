@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Distill, a case study by Cole Crawley</title>
+<meta name="description" content="An MSc dissertation study app, shaped by a mid-build redesign, a heuristic evaluation, adversarial testing and benchmarking.">
+<link rel="canonical" href="https://colecrawley.vercel.app/distill.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cole Crawley">
+<meta property="og:title" content="Distill, a case study by Cole Crawley">
+<meta property="og:description" content="An MSc dissertation study app, shaped by a mid-build redesign, a heuristic evaluation, adversarial testing and benchmarking.">
+<meta property="og:url" content="https://colecrawley.vercel.app/distill.html">
+<meta property="og:image" content="https://colecrawley.vercel.app/img/og/distill.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#EFEEE9">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body data-series="naruto">
+<div class="progress" aria-hidden="true"></div>
+
+<nav class="site-nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="index.html">Cole Crawley</a>
+    <ul class="nav-links">
+      <li><a href="index.html#contents">Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="colour-page">
+  <div class="sfx" aria-hidden="true"></div>
+  <div class="wrap">
+    <div>
+      <p class="chapter-label"><b>2</b> MSc dissertation, shipped and evaluated</p>
+      <h1 style="view-transition-name: ch-distill">Distill</h1>
+      <p class="lede">A study app that turns anything you read into a summary, flashcards and a growing map of how it all connects. It started as a product pitch, was scoped into defensible research, and was redesigned more than once as evidence came in.</p>
+    </div>
+    <p class="chapter-kanji" lang="ja" aria-hidden="true">第二話</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <dl class="meta">
+    <div><dt>Role</dt><dd>Solo product designer and developer</dd></div>
+    <div><dt>Context</dt><dd>MSc dissertation, University of Lincoln</dd></div>
+    <div><dt>Platform</dt><dd>Installable web app (PWA)</dd></div>
+    <div><dt>Status</dt><dd>Shipped and evaluated</dd></div>
+  </dl>
+  <aside class="recap" aria-label="In short">
+    <p class="recap-label">In short <span lang="ja">あらすじ</span></p>
+    <dl>
+      <div><dt>What it is</dt><dd>A study app that turns your reading into summaries, flashcards and a map of how it all connects.</dd></div>
+      <div><dt>My part</dt><dd>Everything: scoping the research, then the design, build and evaluation, solo.</dd></div>
+      <div><dt>Result</dt><dd>11 usability issues found and fixed, a security hole closed, and the slowest page made 98% lighter.</dd></div>
+    </dl>
+    <p class="recap-actions">
+      <a class="btn btn-solid" href="https://distill-study.vercel.app" target="_blank" rel="noopener">Try it live</a>
+      <a class="btn" href="https://github.com/Cole-Crawley/distill" target="_blank" rel="noopener">Read the code</a>
+    </p>
+  </aside>
+</div>
+
+<main class="ink">
+  <div class="wrap">
+    <h2>Scoping a product into a dissertation</h2>
+    <p class="lede">Distill began as a real product idea for a universal problem: forgetting most of what you read within days. Testing recall on real people would have needed a full ethics application that didn't fit an MSc timeline, so I reframed the evaluation around usability, performance and correctness instead. A scope decision, argued and defended, not a workaround.</p>
+
+    <figure class="panel narrow" data-reveal>
+      <img src="img/distill-welcome.jpg" alt="Distill welcome screen: the name in a serif, the line 'Your knowledge, connected.', a short description and a Let's get started button" width="620" height="340" loading="lazy">
+      <figcaption>The first thing a new user sees: one sentence on what it does, one button.</figcaption>
+    </figure>
+
+    <h2>The mid-build redesign</h2>
+    <p>The original plan was a conventional multi-page app, with a top nav routing between separate Upload, Cards, Study, Progress and Map pages. Partway through the build I decided that model fought against how someone actually works inside their notes, and redesigned the information architecture around a persistent sidebar and a writing canvas, closer to Notion. A deliberate call driven by how the app is used, not scope creep.</p>
+
+    <figure class="panel" data-reveal>
+      <svg class="drawing" viewBox="0 0 600 170" role="img" aria-label="Before: five separate pages behind a top navigation bar. After: one shell with a sidebar for notes, study, map and progress beside a writing canvas.">
+        <rect class="box" x="10" y="20" width="200" height="26"/><text x="110" y="38" text-anchor="middle">Top navigation</text>
+        <rect class="box" x="10" y="54" width="200" height="86"/>
+        <rect class="box" x="22" y="68" width="32" height="18"/><rect class="box" x="60" y="68" width="32" height="18"/><rect class="box" x="98" y="68" width="32" height="18"/><rect class="box" x="136" y="68" width="32" height="18"/><rect class="box" x="174" y="68" width="24" height="18"/>
+        <text x="110" y="118" text-anchor="middle" class="t-faint">Five separate pages</text>
+        <text x="110" y="162" text-anchor="middle" class="t-strong">Before</text>
+        <text x="258" y="88" text-anchor="middle" style="font-size:24px">&#8594;</text>
+        <rect class="box" x="300" y="20" width="290" height="120"/>
+        <rect class="fill" x="310" y="30" width="80" height="100"/>
+        <text x="350" y="58" text-anchor="middle" class="on-fill">Notes</text><text x="350" y="76" text-anchor="middle" class="on-fill">Study</text><text x="350" y="94" text-anchor="middle" class="on-fill">Map</text><text x="350" y="112" text-anchor="middle" class="on-fill">Progress</text>
+        <rect class="soft" x="400" y="30" width="180" height="100"/><text x="490" y="84" text-anchor="middle" class="t-faint">Writing canvas</text>
+        <text x="445" y="162" text-anchor="middle" class="t-strong">After</text>
+      </svg>
+      <figcaption>From a page per task to one shell you never leave.</figcaption>
+    </figure>
+
+    <figure class="panel" data-reveal>
+      <img src="img/distill-note.webp" alt="A Distill note titled Attention Is All You Need, with tags, an AI summary, five flashcards and the note text, beside a sidebar grouping notes by subject" width="1600" height="1000" loading="lazy">
+      <figcaption>A note after Distill has processed it: tags, a summary and flashcards sit above the writing, and the sidebar groups every note by subject.</figcaption>
+    </figure>
+
+    <figure class="panel narrow" data-reveal>
+      <img src="img/distill-study.webp" alt="A study card from The Roman Republic showing its answer, with six rating buttons from Blackout to Easy and a tip to press 0 to 5 on the keyboard" width="800" height="740" loading="lazy">
+      <figcaption>Studying a card. Six honest ratings feed the spaced-repetition schedule, and the keyboard shortcut is taught right under the buttons.</figcaption>
+    </figure>
+
+    <h2>Evidence over instinct</h2>
+    <div class="two-col">
+      <div>
+        <h3>A heuristic evaluation that found real problems</h3>
+        <p>I evaluated all five core flows against Nielsen's ten heuristics and found 11 severity-rated issues, including a progress dashboard that showed a 71% "mastery" score for notes with no reviewed cards, and no way to delete a note at all. All 11 were fixed and re-checked in the running app.</p>
+      </div>
+      <div>
+        <h3>Adversarial testing found a vulnerability</h3>
+        <p>A separate pass trying to break the app with malformed and malicious input found a stored XSS hole: pasted rich content went into the page unsanitised. I fixed it with plain-text paste handling plus DOMPurify as a second layer, then proved it closed by reopening the "infected" note and confirming the payload no longer ran.</p>
+      </div>
+    </div>
+
+    <div class="narration">
+      <p>Both findings only showed up by using the running app under realistic and hostile conditions. Neither would have appeared in type-checking, linting or a quick click-through.</p>
+    </div>
+
+    <div class="panel-row">
+      <figure class="panel" data-reveal>
+        <img src="img/distill-map.webp" alt="Knowledge map: notes drawn as coloured circles grouped by subject, with lines connecting related notes" width="1600" height="1000" loading="lazy">
+        <figcaption>The knowledge map links related notes and colours them by subject.</figcaption>
+      </figure>
+      <figure class="panel" data-reveal>
+        <img src="img/distill-progress.webp" alt="Progress page: a bar chart of cards reviewed over 30 days, a retention line chart, and a deck table with mastery bars" width="1600" height="1000" loading="lazy">
+        <figcaption>The Progress page, drawn with the small hand-built SVG charts that replaced a heavy charting library.</figcaption>
+      </figure>
+    </div>
+
+    <h2>A design system that holds</h2>
+    <p>Colour, spacing and type live as CSS custom properties. That mattered in practice: I found more than 44 places across 20 files quietly using raw hex values, which meant dark mode silently didn't reach large parts of the app until I migrated them file by file. Text size and reduced motion are real settings that can override the operating system's preference, not just mirror it.</p>
+
+    <h2>Performance shaped the design</h2>
+    <p>A Lighthouse pass showed the Progress page was the only one missing the performance target, because of a charting library too heavy to tree-shake: 110KB of gzipped JavaScript for two simple charts. I replaced it with a small SVG chart component, cutting that page's script weight by 98% and lifting its score from 85 to 92, with the charts checked side by side against the originals.</p>
+
+    <h2>Measuring the AI, not just the interface</h2>
+    <p>I built a ROUGE benchmark on a stratified corpus of 20 documents (three subjects, three lengths) to score the AI summaries against reference text, because "the AI feature works" needed a number behind it.</p>
+
+    <h2>Stack and methods</h2>
+    <ul class="stack" aria-label="Technologies">
+      <li>React 18</li><li>TypeScript</li><li>Vite</li><li>Tailwind and CSS tokens</li><li>Dexie and IndexedDB</li><li>D3 force graph</li><li>Claude API</li>
+    </ul>
+    <ul class="stack" aria-label="Evaluation methods">
+      <li>Nielsen heuristic evaluation</li><li>Adversarial testing</li><li>Lighthouse audit</li><li>ROUGE benchmark</li>
+    </ul>
+  </div>
+</main>
+
+<nav class="next-chapter" aria-label="Next chapter">
+  <div class="wrap">
+    <a href="card-scanner.html" data-series="jojo">
+      <span><small>Next chapter</small><span class="title" style="view-transition-name: ch-scanner">Card Scanner</span></span>
+      <span class="swatches" aria-hidden="true"><i></i><i></i><i></i></span>
+    </a>
+  </div>
+</nav>
+
+<footer class="colophon">
+  <div class="wrap">
+    <p>Chapter 2's colour page borrows from Naruto, who learns by training with shadow clones whose memories come back to him. Spaced repetition, more or less.</p>
+    <p><a class="link" href="index.html">Back to contents</a></p>
+  </div>
+</footer>
+
+<script src="js/site.js" defer></script>
+</body>
+</html>

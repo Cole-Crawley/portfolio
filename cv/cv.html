@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cole Crawley, CV</title>
+<meta name="robots" content="noindex">
+<!-- Source for cv/Cole_Crawley_CV.pdf. Print to A4 PDF from Chrome (margins: none, no headers). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Shippori+Mincho:wght@400;600;800&display=block">
+<style>
+  @page { size: A4; margin: 0; }
+  :root {
+    --ink: #000; --ink-2: #26251F; --ink-3: #5E5C55; --rule-soft: #CFCCC2; --spot: #F0782A;
+    --display: "Dela Gothic One", "Arial Black", sans-serif;
+    --body: "Shippori Mincho", "Palatino Linotype", Georgia, serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #fff; }
+  body { color: var(--ink-2); font-family: var(--body); font-size: 9.6pt; line-height: 1.42; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .sheet { width: 210mm; min-height: 297mm; padding: 13mm 15mm 12mm; margin: 0 auto; }
+  @media screen { body { background: #EFEEE9; } .sheet { background: #fff; margin-block: 8mm; box-shadow: 0 0 0 2px #000; } }
+  a { color: inherit; text-decoration: none; }
+  p, h1, h2, h3, ul { margin: 0; }
+
+  header { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 6mm; padding-bottom: 4mm; border-bottom: 2px solid var(--ink); }
+  h1 { font-family: var(--display); font-weight: 400; font-size: 30pt; line-height: 0.95; color: var(--ink); letter-spacing: -0.01em; text-shadow: 2.2pt 2.2pt 0 var(--spot); }
+  .role { margin-top: 2.5mm; font-size: 11.5pt; font-weight: 600; color: var(--ink); }
+  .contact { text-align: right; font-size: 8.6pt; line-height: 1.55; }
+  .contact a { border-bottom: 1px solid var(--rule-soft); }
+
+  h2 { display: inline-block; margin: 5mm 0 2.2mm; padding: 0.4mm 2.2mm 0.8mm; background: var(--ink); color: #fff; font-family: var(--body); font-weight: 600; font-size: 9pt; letter-spacing: 0.02em; }
+  .profile { font-size: 10pt; line-height: 1.5; color: var(--ink); }
+
+  .skills { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6mm 7mm; }
+  .skills b { display: block; font-weight: 800; color: var(--ink); }
+
+  .item { margin-top: 2.6mm; break-inside: avoid; }
+  .item-head { display: flex; justify-content: space-between; gap: 4mm; align-items: baseline; }
+  h3 { font-family: var(--display); font-weight: 400; font-size: 10.8pt; color: var(--ink); }
+  h3 small { font-family: var(--body); font-size: 8.8pt; font-weight: 600; color: var(--ink-3); margin-left: 1.5mm; }
+  .when { flex: none; font-size: 8.6pt; color: var(--ink-3); }
+  .link { font-size: 8.4pt; color: var(--ink-3); }
+  .link a { border-bottom: 1px solid var(--spot); color: var(--ink-2); }
+  ul { padding-left: 4.2mm; margin-top: 0.8mm; }
+  li { margin-top: 0.5mm; }
+  li::marker { color: var(--spot); }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 7mm; }
+  .jobs .item { margin-top: 2mm; }
+  .jobs p { margin-top: 0.4mm; }
+  .page-break { break-before: page; }
+  .end { margin-top: 5mm; text-align: right; font-family: var(--display); color: var(--spot); font-size: 11pt; transform: rotate(-4deg); }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+  <header>
+    <div>
+      <h1>Cole Crawley</h1>
+      <p class="role">UX strategist and web designer</p>
+    </div>
+    <p class="contact">
+      Lincoln, UK<span class="phone"></span><br>
+      <a href="mailto:colecrawleyuk@gmail.com">colecrawleyuk@gmail.com</a><br>
+      <a href="https://colecrawley.vercel.app">colecrawley.vercel.app</a> (portfolio)<br>
+      <a href="https://www.linkedin.com/in/cole-crawley-4aa18737a/">linkedin.com/in/cole-crawley-4aa18737a</a><br>
+      <a href="https://github.com/Cole-Crawley">github.com/Cole-Crawley</a>
+    </p>
+  </header>
+
+  <h2>Profile</h2>
+  <p class="profile">I'm a UX and web designer who has just finished an MSc in Computer Science at the University of Lincoln. I work out how a website or app should flow, design how it looks and reads, and test it against real use before calling it done. Because I can also build what I design, I spot a platform's limits early and nothing gets lost in a handoff. My work ranges from a live site for a local business to an AI study app I evaluated against usability heuristics. I pick up new tools quickly and like work with a clear point of view.</p>
+
+  <h2>Skills</h2>
+  <div class="skills">
+    <p><b>UX and strategy</b>User journeys, information architecture, heuristic evaluation, usability testing, UX writing and content design, accessibility</p>
+    <p><b>Visual and web design</b>Layout and typography, colour and design systems, responsive design, interaction and motion design, rapid prototyping</p>
+    <p><b>Front-end (a bonus, not the goal)</b>HTML, CSS, JavaScript, TypeScript, React, Next.js, Vite, Git</p>
+    <p><b>Also used</b>Lighthouse audits, Vitest, Playwright, Storybook, Claude API, Unity, Flutter, Python</p>
+  </div>
+
+  <h2>Selected work</h2>
+
+  <div class="item">
+    <div class="item-head"><h3>MMDriving <small>Client website</small></h3><span class="when">May 2026 to present</span></div>
+    <p class="link"><a href="https://mmdriving-snowy.vercel.app">mmdriving-snowy.vercel.app</a></p>
+    <ul>
+      <li>Planned a one-page structure that answers a nervous learner's questions in the order they ask them, ending in a booked first lesson.</li>
+      <li>Designed a calm navy and gold identity and design tokens, and wrote the copy, pricing and FAQ with the client.</li>
+      <li>Built it in React and TypeScript with an enquiry form and local SEO, keeping it fully static because there was no budget for a server.</li>
+    </ul>
+  </div>
+
+  <div class="item">
+    <div class="item-head"><h3>Distill <small>MSc dissertation</small></h3><span class="when">Jun to Aug 2026</span></div>
+    <p class="link"><a href="https://distill-study.vercel.app">distill-study.vercel.app</a></p>
+    <ul>
+      <li>Designed and built an AI study app that turns reading into summaries, flashcards and a map of how notes connect.</li>
+      <li>Redesigned the information architecture mid-build, from five separate pages to one workspace, after seeing how people actually work in their notes.</li>
+      <li>Found and fixed 11 usability issues through a heuristic evaluation, closed a security flaw found by trying to break the app, and cut the slowest page's JavaScript by 98%.</li>
+    </ul>
+  </div>
+
+  <div class="item">
+    <div class="item-head"><h3>Card Scanner <small>BSc dissertation</small></h3><span class="when">Oct 2024 to May 2025</span></div>
+    <ul>
+      <li>Designed a phone app that recognises a Pokémon card from a photo and prices it, with a confirm step so wrong cards never end up in a collection.</li>
+      <li>Trained two image-recognition models (97% accuracy on sets) and shrank them to run on the phone itself.</li>
+    </ul>
+  </div>
+
+  <div class="item">
+    <div class="item-head"><h3>BaconAI <small>Side project, live</small></h3><span class="when">Mar to Sep 2026</span></div>
+    <p class="link"><a href="https://aitravelplanner-snowy.vercel.app">aitravelplanner-snowy.vercel.app</a></p>
+    <ul>
+      <li>Led the product and design of an AI travel planner, reworking the trip page over three rounds of my own testing, including reversing a decision that made days harder to follow.</li>
+      <li>Built with AI-assisted development in Next.js, with Vitest, Playwright and Storybook for testing.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="sheet page-break">
+  <div class="item" style="margin-top: 0;">
+    <div class="item-head"><h3>CodeMarker <small>Side project, live</small></h3><span class="when">Mar to Sep 2026</span></div>
+    <p class="link"><a href="https://codemarker.vercel.app">codemarker.vercel.app</a></p>
+    <ul>
+      <li>Reframed a generic code reviewer as an exam paper marked in red pen, and rewrote every piece of feedback in plain English for beginners.</li>
+      <li>Designed a colour system where each colour means one thing, and a multiple-choice "scratch work" area for testing fixes in the browser.</li>
+    </ul>
+  </div>
+
+  <div class="item">
+    <div class="item-head"><h3>Pawned Out <small>Game in development</small></h3><span class="when">May 2026 to present</span></div>
+    <ul>
+      <li>Game design, UX and UI, and programming for a pawn shop game in Unity, with screens built so every trade can be read at a glance.</li>
+    </ul>
+  </div>
+
+  <h2>Education</h2>
+  <div class="item" style="margin-top: 0.5mm;">
+    <div class="item-head"><h3>MSc Computer Science <small>University of Lincoln</small></h3><span class="when">2025 to 2026</span></div>
+    <p>Dissertation: Distill, an AI-assisted spaced repetition web app, designed, built and evaluated.</p>
+  </div>
+  <div class="item">
+    <div class="item-head"><h3>BSc Computer Science, High 2:1 <small>University of Lincoln</small></h3><span class="when">2022 to 2025</span></div>
+    <p>Dissertation: a Pokémon card scanner using transfer learning for real-time card recognition and pricing.</p>
+  </div>
+  <div class="item">
+    <div class="item-head"><h3>Games, Animation and VFX <small>Loughborough College</small></h3><span class="when">2018 to 2020</span></div>
+  </div>
+
+  <h2>Work experience</h2>
+  <div class="jobs two">
+    <div class="item">
+      <div class="item-head"><h3>Chef <small>Zizzi, Lincoln</small></h3><span class="when">2026 to now</span></div>
+      <p>Lead the kitchen team through close in a high-volume restaurant, alongside a full-time MSc.</p>
+    </div>
+    <div class="item">
+      <div class="item-head"><h3>Sous Chef <small>The Coffee Pot</small></h3><span class="when">2019 to 2023</span></div>
+      <p>Promoted from kitchen assistant to sous chef within a year, and supervised junior staff.</p>
+    </div>
+    <div class="item">
+      <div class="item-head"><h3>Kitchen Assistant <small>Wetherspoons</small></h3><span class="when">2023 to 2024</span></div>
+      <p>Worked peak services of over 1,000 customers a day, with closing and stock duties.</p>
+    </div>
+    <div class="item">
+      <div class="item-head"><h3>Front of House <small>Pizza Hut</small></h3><span class="when">2019 to 2020</span></div>
+      <p>Customer service across dine-in and phone orders, tills and payments.</p>
+    </div>
+  </div>
+
+  <h2>Also</h2>
+  <p>Years of customer-facing work taught me to explain things clearly and stay calm under pressure, which carries straight into client work. Bilingual in English and Tagalog.</p>
+
+  <p class="end" lang="ja" aria-hidden="true">つづく</p>
+</div>
+
+</body>
+</html>

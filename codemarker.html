@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>CodeMarker, a case study by Cole Crawley</title>
+<meta name="description" content="A code review tool redesigned as an exam paper marked in red pen: plain-English corrections, a grade, and a way to prove each fix works.">
+<link rel="canonical" href="https://colecrawley.vercel.app/codemarker.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cole Crawley">
+<meta property="og:title" content="CodeMarker, a case study by Cole Crawley">
+<meta property="og:description" content="A code review tool redesigned as an exam paper marked in red pen: plain-English corrections, a grade, and a way to prove each fix works.">
+<meta property="og:url" content="https://colecrawley.vercel.app/codemarker.html">
+<meta property="og:image" content="https://colecrawley.vercel.app/img/og/codemarker.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#EFEEE9">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body data-series="akatsuki">
+<div class="progress" aria-hidden="true"></div>
+
+<nav class="site-nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="index.html">Cole Crawley</a>
+    <ul class="nav-links">
+      <li><a href="index.html#contents">Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="colour-page">
+  <div class="sfx" aria-hidden="true"></div>
+  <div class="wrap">
+    <div>
+      <p class="chapter-label"><b>5</b> Self-directed product, redesigned</p>
+      <h1 style="view-transition-name: ch-codemarker">CodeMarker</h1>
+      <p class="lede">Hand in your code and get it back marked, like an exam paper: a grade circled in red pen, corrections in plain English, and a way to prove each fix actually works.</p>
+    </div>
+    <p class="chapter-kanji" lang="ja" aria-hidden="true">第五話</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <dl class="meta">
+    <div><dt>Role</dt><dd>Product and visual design, build</dd></div>
+    <div><dt>Focus</dt><dd>Concept, plain-language UX, trust</dd></div>
+    <div><dt>Languages</dt><dd>JavaScript, TypeScript, Python, C++, C#, Java</dd></div>
+  </dl>
+  <aside class="recap" aria-label="In short">
+    <p class="recap-label">In short <span lang="ja">あらすじ</span></p>
+    <dl>
+      <div><dt>What it is</dt><dd>A code reviewer that hands your code back marked like an exam paper, in plain English.</dd></div>
+      <div><dt>My part</dt><dd>The concept, visual design and writing. The build was AI-assisted.</dd></div>
+      <div><dt>Result</dt><dd>Six languages, with fixes you can test in the browser before you trust them.</dd></div>
+    </dl>
+    <p class="recap-actions">
+      <a class="btn btn-solid" href="https://codemarker.vercel.app" target="_blank" rel="noopener">Try it live</a>
+      <a class="btn" href="https://github.com/Cole-Crawley/AI-code-review-project" target="_blank" rel="noopener">Read the code</a>
+    </p>
+  </aside>
+</div>
+
+<main class="ink">
+  <div class="wrap">
+    <h2>From a generic dev tool to a marked paper</h2>
+    <p class="lede">The first version was called CodeRev: near-black, neon green, a gradient headline promising your code "brutally reviewed". It worked, but it looked like every other AI developer tool.</p>
+    <p>So I redesigned it around one idea everyone already understands: handing in work and getting it back marked. The paper is ruled with a red margin line, code is set like typewriter text, and every judgement is made in pen. I dropped the "AI" badges, cut the copy down to two lines, and renamed it CodeMarker. As before, the build was heavily AI-assisted; the concept and the decisions below are mine.</p>
+
+    <figure class="panel" data-reveal>
+      <img src="img/codemarker-home.webp" alt="CodeMarker landing page: the headline Hand in your code, the line Get it back marked, line by line, language tabs, a ruled answer sheet with a red margin line, and a handwritten red note in the margin saying paste it here, or drop a file" width="1600" height="1000" loading="lazy">
+      <figcaption>The whole landing page is two lines of copy and a sheet of paper. The one tip is handwritten in the margin, where a teacher would put it.</figcaption>
+    </figure>
+
+    <h2>Marked like an exam</h2>
+    <div class="two-col">
+      <div>
+        <h3>A grade you read in a second</h3>
+        <p>The score becomes a letter circled in red pen that draws itself, with a remark underneath, from "Nothing left to fix" to "See me after class". Fixing problems raises it live, so progress is felt, not just counted.</p>
+      </div>
+      <div>
+        <h3>Colour means one thing each</h3>
+        <p>Red pen is for mistakes, pencil orange for risks, blue for improvements, green only for done. Problem lines on the paper are washed and underlined in the same colours, so the code and the corrections read as one page.</p>
+      </div>
+    </div>
+
+    <figure class="panel" data-reveal>
+      <img src="img/codemarker-review.webp" alt="The marked paper: code on the left with a Scratch work panel underneath offering choices A to D, and on the right a red circled F, 48 out of 100, the remark See me after class, and corrections grouped into Mistakes and Risks with circled line numbers" width="1600" height="1000" loading="lazy">
+      <figcaption>The marked paper. Each correction is just a circled line number and a sentence until you open it.</figcaption>
+    </figure>
+
+    <h2>Written for everyone</h2>
+    <p>Code reviews are usually written for the person who already knows what's wrong. I wanted anyone, including someone learning, to understand every correction without looking anything up.</p>
+    <ul class="decisions">
+      <li><strong>Titles say what goes wrong, not what it's called</strong>"Crashes when the user isn't found", not "Unsafe non-null assertion". Jargon only appears when it can't be avoided, and then it's explained in the same sentence.</li>
+      <li><strong>Plain names for severity</strong>Errors, warnings and suggestions became Mistakes, Risks and Improvements, each with a one-line explanation under the heading.</li>
+      <li><strong>Every correction answers the same three questions</strong>What happens, when it happens, and why it matters, then what to change. The old code is struck through in red, and the fix is written in pen.</li>
+      <li><strong>Tips that explain without talking down</strong>Hovering any action says what it does and why you'd want it, after a short pause so the tips never flicker in your way.</li>
+    </ul>
+
+    <figure class="panel" data-reveal>
+      <img src="img/codemarker-open.webp" alt="An opened correction explaining in plain English why getRole crashes, the original code struck through in red, a handwritten fix note and a test, while Scratch work below has choice D circled in red pen and shows getRole(999) giving an error" width="1600" height="1000" loading="lazy">
+      <figcaption>An opened correction, and Scratch work with D circled: the tricky inputs show the crash actually happening.</figcaption>
+    </figure>
+
+    <h2>Proving a fix works</h2>
+    <p class="lede">A suggested fix is only a claim until you run it, so Scratch work is set up like a multiple-choice question. Clicking a letter circles it in red pen, like a student choosing an answer, and then does that thing.</p>
+    <ul class="decisions">
+      <li><strong>A, test the fixes</strong>Each correction comes with a small test that is true once the problem is gone. Run them and each correction gets a tick or a cross. Applying a fix circles A and re-tests on its own.</li>
+      <li><strong>B, C and D: run it, try examples, try tricky inputs</strong>See what the code prints, what everyday inputs return, and what happens with the awkward ones, like missing users or empty lists, where most bugs hide.</li>
+      <li><strong>Different choices for different languages</strong>JavaScript and TypeScript run in the browser, and Python runs on Pyodide. C++, C# and Java need a compiler, so for them the letters copy ready-made tests and calls to run in your own project instead of pretending.</li>
+      <li><strong>A score of 100 has to mean nothing to fix</strong>An early version could give full marks and still list problems. The score, the corrections and the tests now have to agree.</li>
+    </ul>
+
+    <figure class="panel" data-reveal>
+      <img src="img/codemarker-fixed.webp" alt="After applying a fix: the corrected code, Scratch work with A circled showing Line 17 fixed and Line 28 still happening, and the grade raised to a D, 65 out of 100, with the fixed correction crossed through under Done with a green tick" width="1600" height="1000" loading="lazy">
+      <figcaption>After "Apply fix": the code changes, A is circled and re-run, and one tick and one cross show exactly where things stand. The grade rises from F to D.</figcaption>
+    </figure>
+
+    <h2>Stack</h2>
+    <ul class="stack" aria-label="Technologies">
+      <li>Next.js</li><li>TypeScript</li><li>Monaco editor</li><li>Sucrase</li><li>Pyodide</li><li>Framer Motion</li><li>Claude API</li>
+    </ul>
+  </div>
+</main>
+
+<nav class="next-chapter" aria-label="Bonus chapter">
+  <div class="wrap">
+    <a href="pawned-out.html" data-series="urahara">
+      <span><small>Bonus chapter</small><span class="title" style="view-transition-name: ch-pawned">Pawned Out</span></span>
+      <span class="swatches" aria-hidden="true"><i></i><i></i><i></i></span>
+    </a>
+  </div>
+</nav>
+
+<footer class="colophon">
+  <div class="wrap">
+    <p>Chapter 5's colour page borrows the Akatsuki's black and red, which happen to be the colours of a marked exam paper.</p>
+    <p><a class="link" href="index.html">Back to contents</a></p>
+  </div>
+</footer>
+
+<script src="js/site.js" defer></script>
+</body>
+</html>

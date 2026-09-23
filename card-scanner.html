@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Card Scanner, a case study by Cole Crawley</title>
+<meta name="description" content="A BSc dissertation phone app that recognises a Pokémon card from a photo and prices it, shaped by a camera that had to keep its promise.">
+<link rel="canonical" href="https://colecrawley.vercel.app/card-scanner.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cole Crawley">
+<meta property="og:title" content="Card Scanner, a case study by Cole Crawley">
+<meta property="og:description" content="A BSc dissertation phone app that recognises a Pokémon card from a photo and prices it, shaped by a camera that had to keep its promise.">
+<meta property="og:url" content="https://colecrawley.vercel.app/card-scanner.html">
+<meta property="og:image" content="https://colecrawley.vercel.app/img/og/card-scanner.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#EFEEE9">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body data-series="jojo">
+<div class="progress" aria-hidden="true"></div>
+
+<nav class="site-nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="index.html">Cole Crawley</a>
+    <ul class="nav-links">
+      <li><a href="index.html#contents">Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="colour-page">
+  <div class="sfx" aria-hidden="true"></div>
+  <div class="wrap">
+    <div>
+      <p class="chapter-label"><b>3</b> BSc dissertation, shipped and evaluated</p>
+      <h1 style="view-transition-name: ch-scanner">Card Scanner</h1>
+      <p class="lede">Point your phone at a Pokémon card and the app names it, looks up what it's worth today, and adds it to your collection. Two on-device models do the recognising. The harder design problem was making the camera do exactly what people expect.</p>
+    </div>
+    <p class="chapter-kanji" lang="ja" aria-hidden="true">第三話</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <dl class="meta">
+    <div><dt>Role</dt><dd>Solo designer and developer</dd></div>
+    <div><dt>Context</dt><dd>BSc dissertation, University of Lincoln</dd></div>
+    <div><dt>Platform</dt><dd>Phone app (Flutter) with on-device AI</dd></div>
+    <div><dt>Timeline</dt><dd>October 2024 to May 2025</dd></div>
+  </dl>
+  <aside class="recap" aria-label="In short">
+    <p class="recap-label">In short <span lang="ja">あらすじ</span></p>
+    <dl>
+      <div><dt>What it is</dt><dd>A phone app that recognises a Pokémon card from a photo and tells you what it's worth.</dd></div>
+      <div><dt>My part</dt><dd>Designed and built the app, and trained both recognition models.</dd></div>
+      <div><dt>Result</dt><dd>97% accuracy on sets, all 488 test cards identified, and models small enough to run on the phone.</dd></div>
+    </dl>
+    <p class="recap-actions">
+      <a class="btn" href="https://github.com/colecrawley/pokemon-card-scanner-latest" target="_blank" rel="noopener">Read the code</a>
+      <span class="recap-note">It's a phone app, so there's no browser version to try.</span>
+    </p>
+  </aside>
+</div>
+
+<main class="ink">
+  <div class="wrap">
+    <h2>One photo instead of a hundred searches</h2>
+    <p class="lede">A collection can run to hundreds of cards whose value changes week to week, and pricing it means searching for every card one at a time. The app turns that into a single step: photograph the card, confirm what it is, and it joins a collection that keeps its own prices up to date.</p>
+
+    <figure class="panel" data-reveal>
+      <img src="img/scanner-flow.webp" alt="Four phone screens: a card lined up on the camera, an 'Is this your card?' dialog with the name, set and price and Yes and No buttons, a portfolio grid of cards with prices and percentage changes, and one card opened showing its current price, previous price and a red decrease" width="1600" height="1000" loading="lazy">
+      <figcaption>Scan, confirm, collect, check. Every card in the collection carries its price and how far it moved since the last refresh.</figcaption>
+    </figure>
+
+    <h2>The outline is a promise</h2>
+    <p>The camera screen shows a card-shaped outline to line the card up in. In testing, the photo didn't match it: it came out more zoomed in than the outline suggested, sometimes turned sideways, and the preview itself looked stretched. Each fix I was offered added more automatic processing, like smart cropping and orientation guessing, and each one made the result harder to predict.</p>
+    <p>I went the other way and set one rule: whatever is inside the outline is exactly what gets captured, with no automatic cropping and no zoom. The outline tells people what will happen, so the app has to keep its word.</p>
+
+    <ul class="decisions">
+      <li><strong>Separate what the person sees from what the model sees</strong>The model needs a 224 by 224 pixel square, and squashing the photo into that shape was what made the confirmation image look zoomed in. The app now keeps two copies: a faithful crop shown back to you, and a resized one for the model. What you see is what you framed.</li>
+      <li><strong>Always ask before saving</strong>Recognition is a best guess, so nothing is added silently. A dialog shows the card it thinks you scanned, its set and its price, and you answer yes or no. One extra tap stops wrong cards from quietly piling up in someone's collection.</li>
+    </ul>
+
+    <h2>Two models, one question each</h2>
+    <p>Rather than one model choosing between hundreds of near-identical cards, the work is split in two. The first model answers "which set is this from?" and the second answers "which card in that set?". Both start from MobileNetV2, a model already trained to understand images in general, and are retrained on 488 card designs from five sets. That approach is called transfer learning.</p>
+
+    <div class="panel-row">
+      <figure class="panel" data-reveal>
+        <img src="img/scanner-system.webp" alt="Data flow diagram: the input image is preprocessed, the set model classifies it, a confidence check of 0.85 passes it to the card model for that set, a second check of 0.75 leads to the result with card details and value, and low confidence at either check goes to error handling with recapture options" width="585" height="418" loading="lazy">
+        <figcaption>From photo to price, with a confidence check after each model. When either one is unsure, the app offers a retake instead of guessing.</figcaption>
+      </figure>
+      <figure class="panel" data-reveal>
+        <img src="img/scanner-matrix.webp" alt="Confusion matrix for the set model across 151, Base, Fossil, Jungle and Wizards Black Star Promos, with nearly every prediction on the diagonal and two small errors" width="1000" height="800" loading="lazy">
+        <figcaption>The set model's results. Almost everything lands on the diagonal, and both misses are between older Wizards-era sets that share a look.</figcaption>
+      </figure>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <h3>Accurate enough to trust</h3>
+        <p>The set model scored 97.4% on held-out cards, and the card model identified every one of the 488 cards it was tested on. Training on rotated and darkened copies of each card improved results on unseen photos by about 6%, because real photos are rarely straight or well lit.</p>
+      </div>
+      <div>
+        <h3>Small enough to live on the phone</h3>
+        <p>Converting the models to TensorFlow Lite roughly halved their size for a point or two of accuracy at most, so scanning works without a server and without waiting on a connection. Only the price lookup needs the internet.</p>
+      </div>
+    </div>
+
+    <div class="narration">
+      <p>A trade-off I made on purpose: the card model first predicted rarity too, but that extra output broke the model when it was converted for the phone. I removed it, kept the app working on-device, and documented why in the dissertation. And a perfect score on a clean test set says as much about the test set as the model. Photos taken in a dim room are the next thing I'd test.</p>
+    </div>
+
+    <h2>A collection that shows movement</h2>
+    <p>Collectors care about what changed, not just what they own. The home screen leads with the total value and the cards that moved most, the portfolio shows each card's price with its change in green or red, and pulling down refreshes every price from live market data. A search screen covers sealed products too, and a profile keeps a running count of cards and total value.</p>
+
+    <figure class="panel" data-reveal>
+      <img src="img/scanner-app.webp" alt="Three phone screens: home showing a collection value of $276.48 and a list of top movers with percentage changes, a search screen listing 151 sealed products with add buttons, and a profile with a Bulbasaur avatar, total cards and total value" width="1600" height="1000" loading="lazy">
+      <figcaption>Home, search and profile. The same five tabs sit at the bottom of every screen, with the camera one tap away.</figcaption>
+    </figure>
+
+    <h2>Stack and methods</h2>
+    <ul class="stack" aria-label="Technologies">
+      <li>Flutter</li><li>Dart</li><li>Python</li><li>TensorFlow and Keras</li><li>MobileNetV2</li><li>TensorFlow Lite</li><li>SQLite</li><li>TCGplayer prices via TCGCSV</li>
+    </ul>
+    <ul class="stack" aria-label="Evaluation methods">
+      <li>Transfer learning</li><li>Data augmentation</li><li>Confusion matrix analysis</li><li>On-device testing</li>
+    </ul>
+  </div>
+</main>
+
+<nav class="next-chapter" aria-label="Next chapter">
+  <div class="wrap">
+    <a href="ai-travel-planner.html" data-series="onepiece">
+      <span><small>Next chapter</small><span class="title" style="view-transition-name: ch-bacon">BaconAI</span></span>
+      <span class="swatches" aria-hidden="true"><i></i><i></i><i></i></span>
+    </a>
+  </div>
+</nav>
+
+<footer class="colophon">
+  <div class="wrap">
+    <p>Chapter 3's colour page borrows JoJo's violet and gold, the shine of a holo card pulled from a fresh pack. JoJo's cast would also recognise a card by its pose alone.</p>
+    <p><a class="link" href="index.html">Back to contents</a></p>
+  </div>
+</footer>
+
+<script src="js/site.js" defer></script>
+</body>
+</html>
