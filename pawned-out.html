@@ -65,7 +65,7 @@
     <dl>
       <div><dt>What it is</dt><dd>A pawn shop simulation game about appraising, haggling and keeping the shop afloat.</dd></div>
       <div><dt>My part</dt><dd>The game design, the UX and UI, and the programming so far.</dd></div>
-      <div><dt>Result</dt><dd>The shop, haggling, appraisal, skills, end-of-day summary and menus are designed and working in the Unity build.</dd></div>
+      <div><dt>Result</dt><dd>The shop, haggling, appraisal, backpack, skills, end-of-day summary and menus are all working in the Unity build.</dd></div>
     </dl>
     <p class="recap-actions"><span class="recap-note">Still in development, so there's no public build to play yet.</span></p>
   </aside>
@@ -114,22 +114,22 @@
       </figure>
     </div>
 
-    <h2>Designed first, then built</h2>
-    <p>I design each screen before building it in Unity, so the layout decisions are made while they're still cheap to change. Appraisal is already working in the game, and the backpack is being built towards this design: condition gets its own colour on every item, and opening one puts what it's worth, what you paid and your margin in one column.</p>
+    <h2>Knowing what you're buying</h2>
+    <p>When a customer brings something in, you appraise it before you haggle. Four checks tick off one by one, from the serial number to missing parts, so the wait builds a little tension. Then the item's rarity, an estimated value range and its condition land together, and there are only two choices left: make an offer or decline. Everything you own lives in the backpack on Tab, with the hotbar row underneath and a detail card that shows what an item is worth.</p>
 
     <div class="panel-row">
       <figure class="panel" data-reveal>
-        <img src="img/pawned-inventory.webp" alt="Inventory design: a backpack grid of items of different sizes with coloured condition borders, a weight limit, and a vintage watch selected showing Mint, market value, price paid and margin" width="1558" height="903" loading="lazy">
-        <figcaption>The backpack design. Items take up space by size, and margin is the last line of every item.</figcaption>
+        <img src="img/pawned-game-appraise.webp" alt="Appraisal screen in the game: an epic vintage pinball machine with an estimated value of $1,760 to $2,640, a Good condition badge, four passed inspection checks for serial number, structure, authenticity and missing parts, and Make offer and Decline buttons" width="1523" height="854" loading="lazy">
+        <figcaption>Appraising a vintage pinball machine. The checks run first, then rarity, value and condition arrive at once.</figcaption>
       </figure>
       <figure class="panel" data-reveal>
-        <img src="img/pawned-appraise.webp" alt="Appraisal design: a 1962 electric guitar marked Worn, with market value, recommended offer and quick flip price, and a verified serial number" width="1499" height="878" loading="lazy">
-        <figcaption>The appraisal design. The condition badge comes first because it changes every number under it.</figcaption>
+        <img src="img/pawned-game-backpack.webp" alt="The backpack open over the shop: an 18-slot grid, the nine-slot hotbar row below it, and a detail card on the right" width="1523" height="850" loading="lazy">
+        <figcaption>The backpack. Tiles take the colour of each item's condition, and the detail card shows what it's worth.</figcaption>
       </figure>
     </div>
 
     <div class="narration">
-      <p>I studied games, animation and VFX at college before computer science, and this is where both sides meet. So far I've done the game design, the UX research and the UI, and built all of it in Unity myself. It's still a work in progress, so these screens will keep changing.</p>
+      <p>I studied games, animation and VFX at college before computer science, and this is where both sides meet. So far I've done the game design, the UX research and the UI, and built it in Unity. It's still a work in progress, so these screens will keep changing.</p>
     </div>
 
     <h2>Stack</h2>
@@ -156,5 +156,8 @@
 </footer>
 
 <script src="js/site.js" defer></script>
+<!-- Vercel Web Analytics: page views only, no cookies -->
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
