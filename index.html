@@ -20,6 +20,10 @@
 <link rel="icon" href="favicon.ico" sizes="32x32">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Shippori+Mincho:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/home.css">
 </head>
@@ -74,6 +78,7 @@
   </div>
 </header>
 
+<main>
 <!-- Contents, laid out as a manga page. Read left to right, top to bottom. -->
 <section id="contents" class="section">
   <div class="wrap">
@@ -85,7 +90,7 @@
     <ol class="page">
       <li class="p p1">
         <a href="mmdriving.html" data-series="bleach">
-          <span class="p-art"><img src="img/mm-hero.webp" alt="" width="1600" height="1000" loading="lazy"></span>
+          <span class="p-art"><img src="img/mm-hero-960.webp" srcset="img/mm-hero-960.webp 960w, img/mm-hero.webp 1600w" sizes="(max-width: 860px) 100vw, 700px" alt="" width="1600" height="1000" loading="lazy"></span>
           <span class="p-no"><b>1</b> <span lang="ja">第1話</span></span>
           <span class="p-caption">
             <span class="p-title" style="view-transition-name: ch-mmdriving">MMDriving</span>
@@ -96,7 +101,7 @@
       </li>
       <li class="p p2">
         <a href="distill.html" data-series="naruto">
-          <span class="p-art"><img src="img/distill-note.webp" alt="" width="1600" height="1000" loading="lazy"></span>
+          <span class="p-art"><img src="img/distill-note-960.webp" srcset="img/distill-note-960.webp 960w, img/distill-note.webp 1600w" sizes="(max-width: 860px) 100vw, 700px" alt="" width="1600" height="1000" loading="lazy"></span>
           <span class="p-no"><b>2</b> <span lang="ja">第2話</span></span>
           <span class="p-caption">
             <span class="p-title" style="view-transition-name: ch-distill">Distill</span>
@@ -107,7 +112,7 @@
       </li>
       <li class="p p3">
         <a href="card-scanner.html" data-series="jojo">
-          <span class="p-art"><img src="img/scanner-panel.webp" alt="" width="1600" height="700" loading="lazy"></span>
+          <span class="p-art"><img src="img/scanner-panel-960.webp" srcset="img/scanner-panel-960.webp 960w, img/scanner-panel.webp 1600w" sizes="(max-width: 860px) 100vw, 700px" alt="" width="1600" height="700" loading="lazy"></span>
           <span class="p-no"><b>3</b> <span lang="ja">第3話</span></span>
           <span class="p-caption">
             <span class="p-title" style="view-transition-name: ch-scanner">Card Scanner</span>
@@ -119,7 +124,7 @@
       </li>
       <li class="p p4">
         <a href="ai-travel-planner.html" data-series="onepiece">
-          <span class="p-art"><img src="img/bacon-swap.webp" alt="" width="1600" height="1002" loading="lazy"></span>
+          <span class="p-art"><img src="img/bacon-swap-960.webp" srcset="img/bacon-swap-960.webp 960w, img/bacon-swap.webp 1600w" sizes="(max-width: 860px) 100vw, 700px" alt="" width="1600" height="1002" loading="lazy"></span>
           <span class="p-no"><b>4</b> <span lang="ja">第4話</span></span>
           <span class="p-caption">
             <span class="p-title" style="view-transition-name: ch-bacon">BaconAI</span>
@@ -130,7 +135,7 @@
       </li>
       <li class="p p5">
         <a href="codemarker.html" data-series="akatsuki">
-          <span class="p-art"><img src="img/codemarker-open.webp" alt="" width="1600" height="1000" loading="lazy"></span>
+          <span class="p-art"><img src="img/codemarker-open-960.webp" srcset="img/codemarker-open-960.webp 960w, img/codemarker-open.webp 1600w" sizes="(max-width: 860px) 100vw, 700px" alt="" width="1600" height="1000" loading="lazy"></span>
           <span class="p-no"><b>5</b> <span lang="ja">第5話</span></span>
           <span class="p-caption">
             <span class="p-title" style="view-transition-name: ch-codemarker">CodeMarker</span>
@@ -149,7 +154,7 @@
         <span class="p-desc">A pawn shop game I'm designing and building in Unity, where every screen is a decision you make at the counter.</span>
         <span class="p-tag">Game in progress</span>
       </span>
-      <span class="bonus-art"><img src="img/pawned-game-hud.webp" alt="" width="1523" height="857" loading="lazy"></span>
+      <span class="bonus-art"><img src="img/pawned-game-hud-960.webp" srcset="img/pawned-game-hud-960.webp 960w, img/pawned-game-hud.webp 1600w" sizes="(max-width: 860px) 100vw, 700px" alt="" width="1523" height="857" loading="lazy"></span>
     </a>
   </div>
 </section>
@@ -194,10 +199,12 @@
         <a class="link" href="https://github.com/Cole-Crawley" target="_blank" rel="noopener">GitHub</a>
         <a class="link" href="cv/Cole_Crawley_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
       </div>
-      <p class="teaser-end" lang="ja" aria-hidden="true">つづく</p>
+      <p class="teaser-end" lang="ja" aria-hidden="true"></p>
     </div>
   </div>
 </section>
+
+</main>
 
 <footer class="colophon">
   <div class="wrap">

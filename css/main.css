@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Shippori+Mincho:wght@400;600;800&display=swap');
-@import url('tokens.css');
+/* Fonts and tokens.css are linked from each page's <head> (not @import) so they
+   download in parallel instead of one after another. */
 
 /* Cross-document page transitions (Chrome, Edge, Safari 18+). Other browsers
    just navigate normally. */
