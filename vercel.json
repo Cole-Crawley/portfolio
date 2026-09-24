@@ -1,7 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
-    { "source": "/:path*", "has": [{ "type": "host", "value": "www.colecrawley.com" }], "destination": "https://colecrawley.com/:path*", "permanent": true },
-    { "source": "/:path*", "has": [{ "type": "host", "value": "colecrawley.vercel.app" }], "destination": "https://colecrawley.com/:path*", "permanent": true }
+    { "source": "/", "has": [{ "type": "host", "value": "colecrawley.vercel.app" }], "destination": "https://colecrawley.com/", "permanent": true },
+    { "source": "/", "has": [{ "type": "host", "value": "www.colecrawley.com" }], "destination": "https://colecrawley.com/", "permanent": true },
+    { "source": "/:path+", "has": [{ "type": "host", "value": "colecrawley.vercel.app" }], "destination": "https://colecrawley.com/:path+", "permanent": true },
+    { "source": "/:path+", "has": [{ "type": "host", "value": "www.colecrawley.com" }], "destination": "https://colecrawley.com/:path+", "permanent": true }
   ]
 }
