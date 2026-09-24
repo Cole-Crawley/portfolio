@@ -1,6 +1,6 @@
 # Cole Crawley, portfolio
 
-**[colecrawley.vercel.app](https://colecrawley.vercel.app)**
+**[colecrawley.com](https://colecrawley.com)**
 
 My design portfolio, laid out like a volume of manga. The home page is the cover, the project list is a page of comic panels, and every project is a chapter with its own colour page, borrowed from a series I love: Naruto, Bleach, JoJo's Bizarre Adventure and One Piece. Everything inside is black ink on newsprint.
 
