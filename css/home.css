@@ -208,7 +208,7 @@
   border: var(--panel-border) solid var(--rule);
   background: radial-gradient(var(--tone) 1.1px, transparent 1.4px) 0 0 / 7px 7px, var(--paper-2);
 }
-/* The portrait is a real photo in black and white, with a light screentone behind, like the rest of the volume */
+/* A real photo in black and white, background softened like a phone portrait mode */
 .author .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; }
 .author-bubble {
   position: absolute; right: -1.5rem; bottom: -1.2rem; max-width: 15rem; padding: 0.8rem 1.1rem;
