@@ -1,0 +1,8 @@
+/* Self-hosted, subset fonts (SIL Open Font License). Only the characters this site
+   uses are included (Latin plus the handful of katakana and kanji in the design), so
+   the Japanese fonts weigh about 115 KB in total instead of several megabytes.
+   Re-run the subset if new Japanese text is added. */
+@font-face { font-family: "Dela Gothic One"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/DelaGothicOne-400.woff2") format("woff2"); }
+@font-face { font-family: "Shippori Mincho"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/ShipporiMincho-400.woff2") format("woff2"); }
+@font-face { font-family: "Shippori Mincho"; font-style: normal; font-weight: 600; font-display: swap; src: url("../fonts/ShipporiMincho-600.woff2") format("woff2"); }
+@font-face { font-family: "Shippori Mincho"; font-style: normal; font-weight: 800; font-display: swap; src: url("../fonts/ShipporiMincho-800.woff2") format("woff2"); }
