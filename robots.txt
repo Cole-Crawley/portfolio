@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /cv/cv.html
+
+Sitemap: https://colecrawley.vercel.app/sitemap.xml
