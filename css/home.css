@@ -221,6 +221,15 @@
 .author-copy p + p { margin-top: var(--sp-4); }
 @media (max-width: 860px) { .author { grid-template-columns: 1fr; gap: var(--sp-8); } .author-panel { max-width: 20rem; } .author-bubble { right: -0.5rem; } }
 
+/* ── References: three small panels with the same heavy border and offset shadow ── */
+.refs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-6); }
+.ref { display: flex; flex-direction: column; gap: var(--sp-2); padding: var(--sp-5); border: 3px solid var(--rule); box-shadow: 6px 6px 0 var(--spot); background: var(--paper); }
+.ref-name { font-family: var(--f-display); font-size: var(--step-1); line-height: 1.15; margin: 0; overflow-wrap: anywhere; }
+.ref-role { font-weight: 600; margin: 0; }
+.ref-org { color: var(--ink-3); font-size: var(--step--1); margin: 0; }
+.ref .link { margin-top: auto; padding-top: var(--sp-3); font-size: var(--step--1); overflow-wrap: anywhere; align-self: start; }
+@media (max-width: 860px) { .refs { grid-template-columns: 1fr; } }
+
 /* ── Next volume teaser ─────────────────────────────────────── */
 .teaser { position: relative; padding: clamp(1.5rem, 5vw, 3.5rem); border: 4px solid var(--rule); box-shadow: 10px 10px 0 var(--spot); background: var(--paper); }
 .teaser h2 { font-size: var(--step-4); max-width: 16ch; }
