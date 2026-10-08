@@ -79,7 +79,7 @@
     <p class="lede">A collection can run to hundreds of cards whose value changes week to week, and pricing it means searching for every card one at a time. The app turns that into a single step: photograph the card, confirm what it is, and it joins a collection that keeps its own prices up to date.</p>
 
     <figure class="panel" data-reveal>
-      <img src="img/scanner-flow.webp" alt="Four phone screens: a card lined up on the camera, an 'Is this your card?' dialog with the name, set and price and Yes and No buttons, a portfolio grid of cards with prices and percentage changes, and one card opened showing its current price, previous price and a red decrease" width="1600" height="1000" loading="lazy">
+      <img src="img/scanner-flow.webp" alt="Four phone screens: a card lined up on the camera, an 'Is this your card?' dialog with the name, set and price and Yes and No buttons, a portfolio grid of cards with prices and percentage changes, and one card opened showing its current price, previous price and a red decrease" width="1600" height="1000" loading="eager">
       <figcaption>Scan, confirm, collect, check. Every card in the collection carries its price and how far it moved since the last refresh.</figcaption>
     </figure>
 
@@ -97,11 +97,11 @@
 
     <div class="panel-row">
       <figure class="panel" data-reveal>
-        <img src="img/scanner-system.webp" alt="Data flow diagram: the input image is preprocessed, the set model classifies it, a confidence check of 0.85 passes it to the card model for that set, a second check of 0.75 leads to the result with card details and value, and low confidence at either check goes to error handling with recapture options" width="585" height="418" loading="lazy">
+        <img src="img/scanner-system.webp" alt="Data flow diagram: the input image is preprocessed, the set model classifies it, a confidence check of 0.85 passes it to the card model for that set, a second check of 0.75 leads to the result with card details and value, and low confidence at either check goes to error handling with recapture options" width="585" height="418" loading="eager">
         <figcaption>From photo to price, with a confidence check after each model. When either one is unsure, the app offers a retake instead of guessing.</figcaption>
       </figure>
       <figure class="panel" data-reveal>
-        <img src="img/scanner-matrix.webp" alt="Confusion matrix for the set model across 151, Base, Fossil, Jungle and Wizards Black Star Promos, with nearly every prediction on the diagonal and two small errors" width="1000" height="800" loading="lazy">
+        <img src="img/scanner-matrix.webp" alt="Confusion matrix for the set model across 151, Base, Fossil, Jungle and Wizards Black Star Promos, with nearly every prediction on the diagonal and two small errors" width="1000" height="800" loading="eager">
         <figcaption>The set model's results. Almost everything lands on the diagonal, and both misses are between older Wizards-era sets that share a look.</figcaption>
       </figure>
     </div>
@@ -125,7 +125,7 @@
     <p>Collectors care about what changed, not just what they own. The home screen leads with the total value and the cards that moved most, the portfolio shows each card's price with its change in green or red, and pulling down refreshes every price from live market data. A search screen covers sealed products too, and a profile keeps a running count of cards and total value.</p>
 
     <figure class="panel" data-reveal>
-      <img src="img/scanner-app.webp" alt="Three phone screens: home showing a collection value of $276.48 and a list of top movers with percentage changes, a search screen listing 151 sealed products with add buttons, and a profile with a Bulbasaur avatar, total cards and total value" width="1600" height="1000" loading="lazy">
+      <img src="img/scanner-app.webp" alt="Three phone screens: home showing a collection value of $276.48 and a list of top movers with percentage changes, a search screen listing 151 sealed products with add buttons, and a profile with a Bulbasaur avatar, total cards and total value" width="1600" height="1000" loading="eager">
       <figcaption>Home, search and profile. The same five tabs sit at the bottom of every screen, with the camera one tap away.</figcaption>
     </figure>
 

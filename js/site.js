@@ -19,4 +19,12 @@
   }, { rootMargin: '0px 0px -12% 0px', threshold: 0.1 });
 
   targets.forEach((el) => observer.observe(el));
+
+  // Safety net: if the observer never fires for something already in view
+  // (some browsers and hidden tabs), show it rather than leave an empty frame.
+  const showVisible = () => targets.forEach((el) => {
+    if (!el.classList.contains('is-in') && el.getBoundingClientRect().top < innerHeight) el.classList.add('is-in');
+  });
+  addEventListener('load', () => setTimeout(showVisible, 2500));
+  addEventListener('scroll', () => setTimeout(showVisible, 2500), { passive: true });
 })();
