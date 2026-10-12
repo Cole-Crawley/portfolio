@@ -185,7 +185,7 @@
   // Section reveals: images wipe open, headings rise from behind an edge. A safety net shows anything missed.
   const targets = $$('[data-wipe], [data-rise]');
   // opens two frames later, so the closed state has always been drawn first and the movement can never be skipped
-  const open = (el) => requestAnimationFrame(() => requestAnimationFrame(() => { el.classList.add('in'); settling.set(el, performance.now()); }));
+  const open = (el) => requestAnimationFrame(() => requestAnimationFrame(() => { el.classList.add('in'); }));
   // A frame only opens once the picture inside it has arrived, so the animation is always of the picture itself
   // and never of an empty frame. If the picture is very slow the frame opens anyway and the picture fades in.
   const reveal = (el) => {
@@ -202,26 +202,24 @@
     setTimeout(go, 3000);
   };
   const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) reveal(e.target); }), { rootMargin: '0px 0px -24px 0px' });
-  // Anything that leaves the screen before its movement has finished (a fast scroll, or a jump that glides past it)
-  // is closed again while it is off screen, so it opens properly when it is scrolled back to. Once it has been open
-  // for the whole movement it stays open for good and is no longer watched. Only ever closed while off screen.
-  const SETTLE = 1900, settling = new Map();
+  // Everything animates once, on the way down, and then stays open for good. Anything that comes into view from the
+  // top of the screen instead (scrolling back up, or after a jump down the page) is simply there: it is put in place
+  // with its movement switched off for a moment, so nothing plays again on the way back up.
   const gone = (el) => { const r = el.getBoundingClientRect(); return r.bottom <= 0 || r.top >= innerHeight || r.right <= 0 || r.left >= innerWidth; };
-  const settle = () => settling.forEach((at, el) => {
-    const early = performance.now() - at < SETTLE;
-    if (gone(el) && early) { el.classList.remove('in'); delete el.dataset.shown; settling.delete(el); }
-    else if (!early) { settling.delete(el); if (gone(el)) { el.classList.remove('in'); delete el.dataset.shown; } else io.unobserve(el); }
-  });
+  const place = (el) => {
+    el.dataset.shown = '1'; el.classList.add('no-anim', 'in'); void el.offsetWidth;
+    requestAnimationFrame(() => requestAnimationFrame(() => el.classList.remove('no-anim')));
+  };
+  const settle = () => targets.forEach((el) => { if (!el.dataset.shown && el.getBoundingClientRect().top < 0) place(el); });
   let queued = false;
   addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(() => { queued = false; settle(); }); } }, { passive: true });
-  document.addEventListener('scroll', () => settle(), { passive: true, capture: true });
   targets.forEach((el) => io.observe(el));
   // pictures start downloading a screen and a half before they reach the line, so a frame never waits empty
   const ahead = new IntersectionObserver((es) => es.forEach((e) => { if (!e.isIntersecting) return;
     e.target.querySelectorAll('img[loading="lazy"]').forEach((i) => { i.loading = 'eager'; }); ahead.unobserve(e.target); }), { rootMargin: '0px 0px 150% 0px' });
   targets.forEach((el) => ahead.observe(el));
-  // The safety net only shows what is on screen right now, never what a fast scroll or a jump has skipped past,
-  // so everything still animates when it is scrolled back to. It uses the observer's own line.
+  // The safety net only opens what is on screen right now, with the observer's own line; what a jump skipped past
+  // is put in place by settle() above.
   const onScreen = (el) => { const r = el.getBoundingClientRect(); return r.top < innerHeight - 24 && r.bottom > 0 && r.left < innerWidth && r.right > 0; };
   const net = () => { settle(); targets.forEach((el) => { if (onScreen(el)) reveal(el); }); };
   // Once scrolling has stopped at the foot of the page, anything still below the line opens, because there is no

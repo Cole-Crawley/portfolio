@@ -546,3 +546,6 @@ html { scroll-padding-top: 72px; }
 /* the footer clips anything above its top edge, so its links' tap area grows downwards instead */
 .links a::after { top: -3px; transform: none; }
 .top a::after, .top-r a::after, .dock a::after, .links a::after, nav a::after { content: ""; position: absolute; left: -3px; right: -3px; top: 50%; height: 44px; transform: translateY(-50%); }
+
+/* put in place without movement: things that come into view from above (scrolling back up, or after a jump) */
+.no-anim, .no-anim * { transition: none !important; }
