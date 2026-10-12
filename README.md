@@ -11,7 +11,7 @@ My UX and UI design portfolio. I grew up in Manila in the 2000s, and my pocket m
 ## What's in it
 
 - **Four case studies.** MMDriving (client work, live), Distill (MSc dissertation), BaconAI and CodeMarker. Each one leads with the outcome, my role and three results, then the decisions behind them.
-- **Screens on coloured plates.** Screenshots are shown at full resolution and open larger on a click. Recordings of real flows only show actions, never a scroll through a site.
+- **Screens on coloured plates.** Screenshots are shown at full resolution and open larger on a click. Recordings of real flows play at an even 60 frames a second and only show actions, never a scroll through a site.
 - **An About page** with what I do, how I work, where I come from, and references.
 - **A CV that matches**, at `cv/Cole_Crawley_CV.pdf`.
 
