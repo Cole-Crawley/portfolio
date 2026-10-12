@@ -2,29 +2,30 @@
 
 **[colecrawley.com](https://colecrawley.com)**
 
-My design portfolio, laid out like a volume of manga. The home page is the cover, the project list is a page of comic panels, and every project is a chapter with its own colour page, borrowed from a series I love: Naruto, Bleach, JoJo's Bizarre Adventure and One Piece. Everything inside is black ink on newsprint.
+My UX and UI design portfolio. I grew up in Manila in the 2000s, and my pocket money went on snacks from the sari-sari store on the corner, so each project is drawn as its own snack packet on a shelf. Pick one up and it opens the case study.
 
-![The cover](img/og/home.jpg)
+![The home page](img/og/home.jpg)
 
 ---
 
 ## What's in it
 
-- **Five chapters and a bonus.** MMDriving (client work), Distill (MSc dissertation), Card Scanner (BSc dissertation), BaconAI, CodeMarker, and Pawned Out as a bonus chapter.
-- **An "In short" box on every chapter.** Most people skim, so each case study opens with what it is, what I did, the result, and a button to try it.
-- **Colour only where it means something.** Screenshots on the contents page are printed in greyscale screentone and turn to full colour when you point at them.
-- **A CV that matches.** `cv/cv.html` is the source for `cv/Cole_Crawley_CV.pdf`, set in the same type as the site.
+- **Four case studies.** MMDriving (client work, live), Distill (MSc dissertation), BaconAI and CodeMarker. Each one leads with the outcome, my role and three results, then the decisions behind them.
+- **Screens on coloured plates.** Screenshots are shown at full resolution and open larger on a click. Recordings of real flows only show actions, never a scroll through a site.
+- **An About page** with what I do, how I work, where I come from, and references.
+- **A CV that matches**, at `cv/Cole_Crawley_CV.pdf`.
 
 ---
 
 ## How it's built
 
-Plain HTML and CSS, with a few lines of JavaScript for the scroll reveals. No framework and no build step.
+Plain HTML, CSS and a little JavaScript, served as static files. No framework.
 
-- Design tokens live in `css/tokens.css`, including one palette per chapter set with a `data-series` attribute.
-- Page-to-page transitions use cross-document view transitions, and the reading progress bar is a scroll-driven animation, so both work without JavaScript.
-- Everything respects reduced motion, and every page is complete with JavaScript turned off.
-- Type is Dela Gothic One for display and Shippori Mincho for reading.
+- Two typefaces (Archivo and Quiapo), a cream page and one racing green.
+- Every picture comes in several widths in AVIF with WebP behind it, so a phone downloads a file that fits its screen and a large display gets the full detail. A blurred copy holds each picture's place while it loads, and a picture that fails is asked for again before a message with "Try again" appears.
+- Pictures and headings wipe into view as you scroll. Anything skipped by a fast scroll plays when you come back to it, and nothing can stay hidden.
+- Page-to-page transitions use cross-document view transitions. Everything respects reduced motion and works with JavaScript turned off.
+- Checked at ten screen sizes from 320px to 2560px for overflow, missing or blurry pictures, readable text and tap targets.
 
 ---
 

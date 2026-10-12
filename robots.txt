@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /cv/cv.html
 
 Sitemap: https://colecrawley.com/sitemap.xml

@@ -4,6 +4,12 @@
     { "source": "/", "has": [{ "type": "host", "value": "colecrawley.vercel.app" }], "destination": "https://colecrawley.com/", "permanent": true },
     { "source": "/", "has": [{ "type": "host", "value": "www.colecrawley.com" }], "destination": "https://colecrawley.com/", "permanent": true },
     { "source": "/:path+", "has": [{ "type": "host", "value": "colecrawley.vercel.app" }], "destination": "https://colecrawley.com/:path+", "permanent": true },
-    { "source": "/:path+", "has": [{ "type": "host", "value": "www.colecrawley.com" }], "destination": "https://colecrawley.com/:path+", "permanent": true }
+    { "source": "/:path+", "has": [{ "type": "host", "value": "www.colecrawley.com" }], "destination": "https://colecrawley.com/:path+", "permanent": true },
+    { "source": "/mmdriving(.html)?", "destination": "/mm.html", "permanent": true },
+    { "source": "/ai-travel-planner(.html)?", "destination": "/bacon.html", "permanent": true },
+    { "source": "/codemarker(.html)?", "destination": "/code.html", "permanent": true },
+    { "source": "/card-scanner(.html)?", "destination": "/", "permanent": true },
+    { "source": "/pawned-out(.html)?", "destination": "/", "permanent": true },
+    { "source": "/cv/cv.html", "destination": "/cv/Cole_Crawley_CV.pdf", "permanent": true }
   ]
 }
