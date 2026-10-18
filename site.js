@@ -24,8 +24,22 @@
   // ---------- The shelf ----------
   const shelf = $('.lineup'), items = $$('.item', shelf), n = items.length;
   shelf.classList.add('is-live');
+  // Browsers without overflow: clip can still scroll the row under a swipe; keep it at the start so the packs stay where they are drawn.
+  shelf.addEventListener('scroll', () => { if (shelf.scrollLeft) shelf.scrollLeft = 0; });
   let pos = 0, target = 0, dragging = false, startX = 0, startPos = 0, moved = 0, lastX = 0, vel = 0, busy = false, pending = null;
   const t0 = performance.now();
+  // Each pack starts as live SVG, then switches to its pre-drawn picture (flatten.py) once that has loaded. The two look the same;
+  // the picture just costs far less to redraw while the shelf moves (Firefox re-runs the SVG paint filters on every frame).
+  items.forEach((it) => {
+    const svg = $('.pack-art', it), g = svg && svg.querySelector('g[clip-path]'), src = it.dataset.flat;
+    if (!g || !src) return;
+    const [, , w, h] = svg.getAttribute('viewBox').split(' ');
+    const im = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+    im.setAttribute('width', w); im.setAttribute('height', h); im.setAttribute('preserveAspectRatio', 'none');
+    // drawn on top first and the SVG artwork removed only once the picture is showing, so there is never a blank frame
+    im.addEventListener('load', () => requestAnimationFrame(() => { [...g.children].forEach((c) => { if (c !== im) c.remove(); }); }), { once: true });
+    im.setAttribute('href', src); g.appendChild(im);
+  });
   const wrap = (d) => ((d + n / 2) % n + n) % n - n / 2;
   const ease = (t) => 1 - Math.pow(1 - t, 4);
   // On a phone the packs sit further apart, so the neighbours peek in from the edges and never hide under the middle one.

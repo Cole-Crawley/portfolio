@@ -149,7 +149,8 @@ h2, h3 { font: 500 var(--l)/1.04 var(--sans); letter-spacing: -.038em; text-wrap
 .item-cap b { font-weight: 500; color: var(--ink); }
 
 /* With JS the shelf becomes a draggable row; positions are set from site.js. */
-.lineup.is-live { display: block; padding: 0; overflow: hidden; cursor: grab; touch-action: pan-y; }
+/* clip, not just hidden: Chrome on Android otherwise scrolls the row sideways under a swipe, pushing the middle pack off the screen */
+.lineup.is-live { display: block; padding: 0; overflow: hidden; overflow: clip; cursor: grab; touch-action: pan-y; }
 .lineup.is-live.is-drag { cursor: grabbing; }
 .lineup.is-live .item { position: absolute; left: 50%; top: 45%; will-change: transform; pointer-events: none; }
 .lineup.is-live .item a, .lineup.is-live .pack-art { pointer-events: none; }
