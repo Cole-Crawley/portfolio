@@ -10,15 +10,22 @@
   if (box) {
     const big = box.querySelector('img'), stage = document.createElement('div'); stage.className = 'lb-stage';
     box.appendChild(stage); stage.appendChild(big);
-    const x = document.createElement('button'); x.type = 'button'; x.className = 'lb-x'; x.textContent = 'Close'; box.appendChild(x);
+    // Two plain buttons, so what a click on the picture does is also written down: full size, or back to fitting the screen.
+    const tools = document.createElement('div'); tools.className = 'lb-tools'; box.appendChild(tools);
+    const z = document.createElement('button'); z.type = 'button'; z.className = 'lb-z'; z.textContent = 'Full size'; tools.appendChild(z);
+    const x = document.createElement('button'); x.type = 'button'; x.className = 'lb-x'; x.textContent = 'Close'; tools.appendChild(x);
     const hint = document.createElement('p'); hint.className = 'lb-hint'; box.appendChild(hint);
     box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-label', 'Picture viewer');
     const touch = matchMedia('(pointer: coarse)').matches;
     let opener = null, pushed = false;
+    // everything on the page except the viewer, made unreachable while the viewer is open
+    const behind = () => [...document.body.children].filter((el) => el !== box && el.tagName !== 'SCRIPT');
+    let was = [];
     const zoom = (on, cx, cy) => {
       const before = big.getBoundingClientRect(), fx = cx === undefined ? 0.5 : (cx - before.left) / before.width, fy = cy === undefined ? 0.5 : (cy - before.top) / before.height;
       box.style.setProperty('--zw', Math.round(Math.max(innerWidth * 1.6, Math.min(big.naturalWidth || 2400, innerWidth * (touch ? 3.2 : 2.2)))) + 'px');
-      box.classList.toggle('is-zoomed', on);
+      // on anything wider than a phone, full size means the picture fills the width of the screen and scrolls only up and down
+      box.classList.toggle('is-fill', on && innerWidth > 820); box.classList.toggle('is-zoomed', on); z.textContent = on ? 'Fit to screen' : 'Full size'; z.setAttribute('aria-pressed', String(on));
       if (!on) { box.scrollTo(0, 0); return; }
       // keep the point that was tapped under the finger
       const after = big.getBoundingClientRect();
@@ -26,7 +33,7 @@
       box.scrollTop = after.top + box.scrollTop + fy * after.height - innerHeight / 2;
     };
     const shut = (fromHistory) => {
-      if (box.hidden) return; box.hidden = true; box.classList.remove('is-zoomed'); big.removeAttribute('src'); document.body.style.overflow = '';
+      if (box.hidden) return; box.hidden = true; was.forEach(([el, v]) => { el.inert = v; }); was = []; box.classList.remove('is-zoomed'); z.textContent = 'Full size'; z.setAttribute('aria-pressed', 'false'); big.removeAttribute('src'); document.body.style.overflow = '';
       if (pushed && !fromHistory) { pushed = false; history.back(); } pushed = false;
       if (opener) opener.focus({ preventScroll: true });
     };
@@ -34,17 +41,18 @@
       const small = b.querySelector('img'); opener = b;
       // show the copy already on the page at once, then swap in the full-size file when it has arrived
       big.src = small.currentSrc || small.src; big.alt = small.alt;
-      const ready = touch ? 'Tap to zoom in, then drag to look around' : 'Click to zoom in, scroll to look around';
+      const ready = touch ? 'Tap the picture for full size. Tap outside it to close.' : 'Click the picture for full size. Esc or click outside it to close.';
       hint.textContent = 'Loading full size'; box.classList.add('is-loading');
       const full = new Image();
       full.onload = () => { if (!box.hidden && opener === b) { big.src = full.src; hint.textContent = ready; box.classList.remove('is-loading'); } };
       full.onerror = () => { if (!box.hidden && opener === b) { hint.textContent = "Full size didn't load. This is the smaller copy."; box.classList.remove('is-loading'); } };
       full.src = b.dataset.full;
-      box.hidden = false; box.scrollTo(0, 0); document.body.style.overflow = 'hidden'; x.focus({ preventScroll: true });
+      box.hidden = false; was = behind().map((el) => [el, el.inert]); was.forEach(([el]) => { el.inert = true; }); box.scrollTo(0, 0); document.body.style.overflow = 'hidden'; x.focus({ preventScroll: true });
       try { history.pushState({ viewer: 1 }, ''); pushed = true; } catch (e) { pushed = false; }
     }));
     big.addEventListener('click', (e) => { e.stopPropagation(); zoom(!box.classList.contains('is-zoomed'), e.clientX, e.clientY); });
     x.addEventListener('click', (e) => { e.stopPropagation(); shut(); });
+    z.addEventListener('click', (e) => { e.stopPropagation(); zoom(!box.classList.contains('is-zoomed')); });
     stage.addEventListener('click', (e) => { if (e.target === stage) shut(); });
     addEventListener('keydown', (e) => { if (e.key === 'Escape') shut(); });
     addEventListener('popstate', () => { if (pushed) { pushed = false; shut(true); } });
